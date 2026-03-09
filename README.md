@@ -84,6 +84,16 @@ Messages are both:
 # 🏗 Architecture
 
 The portfolio uses a decoupled frontend/backend architecture.
+User
+ │
+ ▼
+React Frontend (Vite)
+ │
+ ▼
+Express API
+ │
+ ├── MongoDB Atlas (store messages)
+ └── Nodemailer (send email notification)
 
 Frontend
 
