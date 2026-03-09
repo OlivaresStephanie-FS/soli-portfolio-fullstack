@@ -1,4 +1,4 @@
-import NavBar from "../Navbar/Navbar";
+import NavBar from "../NavBar/NavBar";
 import ScrollToHash from "../ScrollToHash/ScrollToHash";
 
 function PageShell({ children }) {
