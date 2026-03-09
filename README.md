@@ -1,4 +1,5 @@
 # Soli Portfolio — Full-Stack Developer Portfolio
+
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
 ![Node](https://img.shields.io/badge/Node.js-20-green?logo=node.js)
 ![Express](https://img.shields.io/badge/Express.js-black?logo=express)
@@ -14,6 +15,20 @@ This project demonstrates real-world full-stack architecture using React, Node.j
 # 🚀 Live Portfolio
 
 🌐 https://soli.nyc
+
+# 📸 Screenshots
+
+## Homepage
+
+![Homepage](./screenshots/home.png)
+
+## Projects
+
+![Projects](./screenshots/projects.png)
+
+## Contact System
+
+![Contact](./screenshots/contact.png)
 
 ---
 
@@ -65,6 +80,26 @@ Messages are both:
 • delivered directly via email
 
 ---
+
+# 🏗 Architecture
+
+The portfolio uses a decoupled frontend/backend architecture.
+
+Frontend
+
+- React application built with Vite
+- Handles UI, routing, and contact form submission
+
+Backend
+
+- Express API server
+- MongoDB Atlas for message persistence
+- Nodemailer for email delivery
+- Rate limiting for spam protection
+
+Contact flow:
+
+User → React Form → Express API → MongoDB + Email Notification
 
 # 📁 Project Structure
 
