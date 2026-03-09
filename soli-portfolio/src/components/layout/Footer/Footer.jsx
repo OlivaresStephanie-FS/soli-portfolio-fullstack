@@ -1,4 +1,5 @@
 import Container from "../../ui/Container/Container";
+import SystemStatus from "../SystemStatus";
 import "./Footer.css";
 
 function Footer() {
@@ -7,18 +8,6 @@ function Footer() {
 	return (
 		<footer className="site-footer">
 			<Container className="site-footer__inner">
-				<div className="system-status">
-					<h4>System Status</h4>
-					<p>
-						🟢 API Operational —{" "}
-						<a
-							href="https://soli-portfolio-api.onrender.com"
-							target="_blank"
-							rel="noopener noreferrer">
-							View API Health
-						</a>
-					</p>
-				</div>
 				<div className="site-footer__brand">
 					<p className="site-footer__name">Stephanie Olivares</p>
 					<p className="site-footer__role">
@@ -28,6 +17,7 @@ function Footer() {
 
 				<div className="site-footer__meta">
 					<p>© {year} soli.nyc</p>
+					<SystemStatus />
 				</div>
 			</Container>
 		</footer>
