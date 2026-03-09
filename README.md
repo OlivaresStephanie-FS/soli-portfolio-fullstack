@@ -1,4 +1,9 @@
 # Soli Portfolio — Full-Stack Developer Portfolio
+![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![Node](https://img.shields.io/badge/Node.js-20-green?logo=node.js)
+![Express](https://img.shields.io/badge/Express.js-black?logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 A modern full-stack developer portfolio showcasing projects, technical skills, and a fully integrated backend contact system.
 
