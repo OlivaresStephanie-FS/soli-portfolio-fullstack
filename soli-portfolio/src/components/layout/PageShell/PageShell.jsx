@@ -1,11 +1,11 @@
-import Navbar from "../Navbar/Navbar";
+import NavBar from "../Navbar/Navbar";
 import ScrollToHash from "../ScrollToHash/ScrollToHash";
 
 function PageShell({ children }) {
 	return (
 		<div className="page-shell">
 			<ScrollToHash />
-			<Navbar />
+			<NavBar />
 			{children}
 		</div>
 	);
