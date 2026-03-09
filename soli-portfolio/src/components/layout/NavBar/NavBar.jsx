@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import Container from "../../ui/Container/Container";
+import logo from "../../../assets/branding/solinyc-logo.png";
 import "./NavBar.css";
 
 function Navbar() {
 	return (
 		<header className="site-header">
 			<Container className="site-header__inner">
-				<Link to="/" className="site-logo">
-					<span className="site-logo__name">Stephanie Olivares</span>
-					<span className="site-logo__role">
-						Full-Stack MERN Developer
-					</span>
+				<Link to="/" className="site-brand" aria-label="Go to homepage">
+					<img
+						src={logo}
+						alt="Soli NYC logo"
+						className="site-brand__logo"
+					/>
+					<div className="site-brand__text">
+						<span className="site-brand__name">
+							Stephanie Olivares
+						</span>
+						<span className="site-brand__role">
+							Full-Stack MERN Developer
+						</span>
+					</div>
 				</Link>
 
 				<nav className="site-nav" aria-label="Primary">

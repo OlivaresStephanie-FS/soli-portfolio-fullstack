@@ -1,5 +1,6 @@
 import Container from "../../ui/Container/Container";
 import SystemStatus from "../../SystemStatus";
+import logo from "../../../assets/branding/solinyc-logo-footer.png";
 import "./Footer.css";
 
 function Footer() {
@@ -9,10 +10,16 @@ function Footer() {
 		<footer className="site-footer">
 			<Container className="site-footer__inner">
 				<div className="site-footer__brand">
-					<p className="site-footer__name">Stephanie Olivares</p>
-					<p className="site-footer__role">
-						Full-Stack MERN Developer
-					</p>
+					<img
+						src={logo}
+						alt="Soli NYC logo"
+						className="site-footer__logo"
+					/>
+
+					<div className="site-footer__brand-text">
+						<p className="site-footer__name">Stephanie Olivares</p>
+						<p className="site-footer__role">Full-Stack MERN Developer</p>
+					</div>
 				</div>
 
 				<div className="site-footer__meta">

@@ -15,22 +15,41 @@
     min-height: 76px;
 }
 
-.site-logo {
+.site-brand {
     display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-brand__logo {
+    height: 42px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.site-brand:hover .site-brand__logo {
+    transform: scale(1.04);
+}
+
+.site-brand__text {
+    display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    line-height: 1.1;
 }
 
-.site-logo__name {
-    color: var(--text);
-    font-size: 1rem;
+.site-brand__name {
     font-weight: 700;
-    letter-spacing: -0.02em;
+    color: var(--text);
 }
 
-.site-logo__role {
+.site-brand__role {
+    font-size: 0.85rem;
     color: var(--text-muted);
-    font-size: 0.82rem;
+    margin-top: 0.15rem;
 }
 
 .site-nav {
@@ -74,6 +93,14 @@
         justify-content: center;
         padding-top: 0.9rem;
         padding-bottom: 0.9rem;
+    }
+
+    .site-brand__logo {
+        height: 36px;
+    }
+
+    .site-brand__role {
+        font-size: 0.8rem;
     }
 
     .site-nav {
