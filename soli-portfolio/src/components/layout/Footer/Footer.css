@@ -15,6 +15,16 @@
     gap: 0.2rem;
 }
 
+.system-status {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.system-status a {
+    text-decoration: underline;
+}
+
 .site-footer__name {
     color: var(--text);
     font-weight: 700;
