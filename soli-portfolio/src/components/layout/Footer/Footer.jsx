@@ -1,5 +1,5 @@
 import Container from "../../ui/Container/Container";
-import SystemStatus from "../SystemStatus";
+import SystemStatus from "../../SystemStatus";
 import "./Footer.css";
 
 function Footer() {
