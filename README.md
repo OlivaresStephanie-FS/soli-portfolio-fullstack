@@ -1,15 +1,29 @@
-# Soli Portfolio — Full Stack
+# Soli Portfolio — Full-Stack Developer Portfolio
 
-Personal developer portfolio built with a full-stack architecture.
+A modern full-stack developer portfolio showcasing projects, technical skills, and a fully integrated backend contact system.
 
-## Tech Stack
+This project demonstrates real-world full-stack architecture using React, Node.js, Express, and MongoDB.
 
-### Frontend
+---
+
+# 🚀 Live Portfolio
+
+🌐 https://soli.nyc
+
+---
+
+# 🧰 Tech Stack
+
+## Frontend
+
 - React
 - Vite
 - CSS
+- Responsive layout
+- Component-based architecture
 
-### Backend
+## Backend
+
 - Node.js
 - Express
 - MongoDB Atlas
@@ -17,25 +31,123 @@ Personal developer portfolio built with a full-stack architecture.
 - Nodemailer
 - express-rate-limit
 
-## Features
+---
 
-- Responsive developer portfolio
-- Full-stack contact form
+# ✨ Features
+
+### Portfolio Website
+
+- Responsive design
+- Project showcase
+- Skills and experience sections
+- Smooth scrolling navigation
+
+### Full-Stack Contact System
+
+The portfolio includes a production-style contact system:
+
+- React form with controlled inputs
+- API requests using `fetch`
+- Express backend endpoint
 - MongoDB message storage
-- Email notifications
-- Rate limiting spam protection
+- Email notifications via Nodemailer
+- Rate limiting to prevent spam
 - Environment-based configuration
 
-## Project Structure
-SOLIPORTFOLIO
+Messages are both:
+
+• stored in MongoDB  
+• delivered directly via email
+
+---
+
+# 📁 Project Structure
+
+soli-portfolio-fullstack
 │
 ├── portfolio-backend
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   └── server.js
+│ ├── config
+│ ├── controllers
+│ ├── models
+│ ├── routes
+│ └── server.js
 │
 └── soli-portfolio
-    ├── src
-    ├── public
-    └── vite.config.js
+├── src
+├── public
+└── vite.config.js
+
+---
+
+# ⚙️ Environment Variables
+
+## Backend (.env)
+
+PORT=3001
+MONGODB_URI=your_mongodb_connection_string
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_email
+EMAIL_PASS=your_app_password
+EMAIL_TO=your_email
+
+CLIENT_URL=http://localhost:5173
+
+## Frontend (.env)
+
+VITE_API_URL=http://localhost:3001
+
+---
+
+# 💻 Running Locally
+
+## 1️⃣ Clone the repository
+
+git clone https://github.com/OlivaresStephanie-FS/soli-portfolio-fullstack.git
+
+cd soli-portfolio-fullstack
+
+---
+
+## 2️⃣ Start Backend
+
+cd portfolio-backend
+npm install
+npm run dev
+
+Server runs on:
+
+http://localhost:3001
+
+---
+
+## 3️⃣ Start Frontend
+
+Open a new terminal:
+
+cd soli-portfolio
+npm install
+npm run dev
+
+Frontend runs on:
+
+http://localhost:5173
+
+---
+
+# 📬 Contact
+
+If you'd like to collaborate, discuss a project, or explore opportunities:
+
+📧 soli@soli.nyc  
+🔗 LinkedIn: https://www.linkedin.com/in/solinyc  
+💻 GitHub: https://github.com/OlivaresStephanie-FS
+
+---
+
+# 👩‍💻 Author
+
+**Stephanie Olivares**
+
+Full-Stack MERN Developer focused on building thoughtful, scalable web applications and tools that solve real-world problems.
