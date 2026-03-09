@@ -81,9 +81,11 @@ Messages are both:
 
 ---
 
-# 🏗 Architecture
+## 🏗 Architecture
 
 The portfolio uses a decoupled frontend/backend architecture.
+
+```
 User
  │
  ▼
@@ -94,40 +96,43 @@ Express API
  │
  ├── MongoDB Atlas (store messages)
  └── Nodemailer (send email notification)
+```
 
-Frontend
+### Frontend
 
 - React application built with Vite
 - Handles UI, routing, and contact form submission
 
-Backend
+### Backend
 
 - Express API server
 - MongoDB Atlas for message persistence
 - Nodemailer for email delivery
 - Rate limiting for spam protection
 
-Contact flow:
+**Contact flow**
 
+```
 User → React Form → Express API → MongoDB + Email Notification
+```
 
-# 📁 Project Structure
+## 📁 Project Structure
 
+```
 soli-portfolio-fullstack
 │
 ├── portfolio-backend
-│ ├── config
-│ ├── controllers
-│ ├── models
-│ ├── routes
-│ └── server.js
+│   ├── config
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   └── server.js
 │
 └── soli-portfolio
-├── src
-├── public
-└── vite.config.js
-
----
+    ├── src
+    ├── public
+    └── vite.config.js
+```
 
 # ⚙️ Environment Variables
 
