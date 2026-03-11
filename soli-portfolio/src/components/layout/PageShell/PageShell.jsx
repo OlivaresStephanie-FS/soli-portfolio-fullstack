@@ -1,4 +1,5 @@
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 import ScrollToHash from "../ScrollToHash/ScrollToHash";
 
 function PageShell({ children }) {
@@ -7,6 +8,7 @@ function PageShell({ children }) {
 			<ScrollToHash />
 			<NavBar />
 			{children}
+			<Footer />
 		</div>
 	);
 }
