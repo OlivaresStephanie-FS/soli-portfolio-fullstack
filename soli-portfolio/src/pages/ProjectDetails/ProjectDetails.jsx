@@ -1,71 +1,128 @@
 import { useParams } from "react-router-dom";
+import { projects } from "../../data/projects";
+import PageShell from "../../components/layout/PageShell/PageShell";
+import "./projectDetails.css";
 
-import projects from "../../data/fallbackProjects";
-
-import Container from "../../components/ui/Container/Container";
-import ProjectHero from "../../components/projects/ProjectHero/ProjectHero";
-import { Link } from "react-router-dom";
-import "./ProjectDetails.css";
-
-function ProjectDetails() {
+export default function ProjectDetails() {
 	const { slug } = useParams();
 
 	const project = projects.find((p) => p.slug === slug);
 
 	if (!project) {
 		return (
-			<Container>
-				<h1>Project not found</h1>
-			</Container>
+			<PageShell>
+				<div className="container project-details">
+					<h1>Project not found.</h1>
+				</div>
+			</PageShell>
 		);
 	}
 
 	return (
-		<main>
-			<section className="project-back">
-				<Container>
-					<Link to="/" className="project-back__link">
-						← Back to Home
-					</Link>
-				</Container>
-			</section>
-			<ProjectHero project={project} />
+		<PageShell>
+			<div className="project-details">
+				<section className="project-hero">
+					<div className="container">
+						<div className="project-eyebrow-group">
+							<p className="project-eyebrow">Case Study</p>
+							<p className="project-eyebrow project-eyebrow--muted">
+								Client Project
+							</p>
+						</div>
 
-			<section className="project-body">
-				<Container>
-					<img
-						src={project.image}
-						alt={project.title}
-						style={{ marginBottom: "3rem", borderRadius: "14px" }}
-					/>
+						<h1 className="project-title">{project.title}</h1>
 
-					<h2>Overview</h2>
+						<p className="project-tagline">{project.tagline}</p>
 
-					<p>
-						This project demonstrates building a modern web
-						application with scalable architecture and clean UI.
-					</p>
-
-					<div style={{ marginTop: "2rem" }}>
-						{project.live && (
-							<a href={project.live} target="_blank">
-								View Live
-							</a>
-						)}
-
-						{project.github && (
+						<div className="project-links">
 							<a
-								href={project.github}
+								href={project.liveUrl}
 								target="_blank"
-								style={{ marginLeft: "1rem" }}>
-								GitHub
+								rel="noreferrer"
+								className="project-link-button">
+								Live Site
 							</a>
-						)}
+
+							<a
+								href={project.githubUrl}
+								target="_blank"
+								rel="noreferrer"
+								className="project-link-button project-link-button--ghost">
+								GitHub Repository
+							</a>
+						</div>
 					</div>
-				</Container>
-			</section>
-		</main>
+				</section>
+
+				{project.screenshots?.length > 0 && (
+					<section className="project-section">
+						<div className="container">
+							<h2>Project Preview</h2>
+
+							<div className="project-gallery">
+								{project.screenshots.map((shot, index) => (
+									<div
+										className="project-gallery__item"
+										key={shot}>
+										<img
+											src={shot}
+											alt={`${project.title} screenshot ${index + 1}`}
+											className="project-gallery__image"
+										/>
+									</div>
+								))}
+							</div>
+						</div>
+					</section>
+				)}
+
+				<section className="project-section">
+					<div className="container">
+						<h2>Problem</h2>
+						<p>{project.problem}</p>
+					</div>
+				</section>
+
+				<section className="project-section">
+					<div className="container">
+						<h2>Solution</h2>
+						<p>{project.solution}</p>
+					</div>
+				</section>
+
+				<section className="project-section">
+					<div className="container">
+						<h2>Key Features</h2>
+						<ul className="project-list">
+							{project.features.map((feature) => (
+								<li key={feature}>{feature}</li>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section className="project-section">
+					<div className="container">
+						<h2>Architecture</h2>
+						<ul className="project-list">
+							{project.architecture.map((item) => (
+								<li key={item}>{item}</li>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section className="project-section">
+					<div className="container">
+						<h2>Tech Stack</h2>
+						<ul className="project-list project-tech-list">
+							{project.tech.map((tech) => (
+								<li key={tech}>{tech}</li>
+							))}
+						</ul>
+					</div>
+				</section>
+			</div>
+		</PageShell>
 	);
 }
-
-export default ProjectDetails;
