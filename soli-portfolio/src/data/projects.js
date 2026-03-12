@@ -129,11 +129,6 @@ export const projects = [
 				alt: "Netflix clone homepage",
 				caption: "Hero banner and browsing layout.",
 			},
-			{
-				src: severance,
-				alt: "Netflix clone supporting visual",
-				caption: "Secondary media-inspired visual for the case study.",
-			},
 		],
 	},
 	{
