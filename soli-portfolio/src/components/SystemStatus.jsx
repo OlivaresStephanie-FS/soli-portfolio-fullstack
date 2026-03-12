@@ -7,7 +7,7 @@ export default function SystemStatus() {
 		async function checkAPI() {
 			try {
 				const res = await fetch(
-					"https://soli-portfolio-api.onrender.com",
+					"https://soli-portfolio-api.onrender.com/health",
 				);
 
 				if (res.ok) {
@@ -20,13 +20,9 @@ export default function SystemStatus() {
 			}
 		}
 
-		// run immediately
 		checkAPI();
-
-		// run every 5 minutes
 		const interval = setInterval(checkAPI, 300000);
 
-		// cleanup when component unmounts
 		return () => clearInterval(interval);
 	}, []);
 
