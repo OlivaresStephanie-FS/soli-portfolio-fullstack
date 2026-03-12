@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../../data/projects";
 import PageShell from "../../components/layout/PageShell/PageShell";
-import "./projectDetails.css";
+import "./ProjectDetails.css";
 
 export default function ProjectDetails() {
 	const { slug } = useParams();
