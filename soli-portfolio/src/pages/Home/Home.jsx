@@ -33,7 +33,6 @@ function Home() {
 				<Contact />
 			</Reveal>
 
-			<Footer />
 		</PageShell>
 	);
 }

@@ -19,8 +19,9 @@
 	gap: 2rem;
 }
 
-.hero__text {
+.hero__identity {
 	flex: 1;
+	min-width: 0;
 }
 
 .hero__title {
@@ -40,16 +41,21 @@
 	letter-spacing: -0.02em;
 }
 
-.hero__summary {
+.hero__copy {
 	margin-top: var(--space-5);
-	max-width: 58ch;
+	max-width: 62ch;
+}
+
+.hero__summary {
+	margin-top: 0;
+	max-width: none;
 	font-size: 1.1rem;
 	color: var(--text);
 }
 
 .hero__supporting-copy {
 	margin-top: var(--space-4);
-	max-width: 62ch;
+	max-width: none;
 }
 
 .hero__actions {
@@ -62,6 +68,7 @@
 .hero__profile {
 	position: relative;
 	flex-shrink: 0;
+	margin-top: 0.15rem;
 }
 
 .hero__profile::before {
@@ -79,8 +86,8 @@
 .hero__profile-image {
 	position: relative;
 	z-index: 1;
-	width: 140px;
-	height: 140px;
+	width: 200px;
+	height: 200px;
 	object-fit: cover;
 	border: 2px solid var(--border);
 	border-radius: 50%;
@@ -156,7 +163,7 @@
 	font-size: 0.9rem;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 767px) {
 	.hero__inner {
 		grid-template-columns: 1fr;
 	}
@@ -166,52 +173,64 @@
 	}
 
 	.hero__intro {
-		flex-direction: column;
+		display: flex;
 		align-items: flex-start;
-		gap: 1rem;
+		gap: .5rem;
+	}
+
+	.hero__text {
+		flex: 1;
+		min-width: 0;
 	}
 
 	.hero__profile {
-		order: 2;
-		margin-top: var(--space-2);
-	}
-
-	.hero__actions {
-		order: 3;
+		flex-shrink: 0;
+		margin-top: 0.2rem;
 	}
 
 	.hero__profile-image {
-		width: 120px;
-		height: 120px;
+		width: 150px;
+		height: 150px;
 	}
 }
 
-@media (max-width: 640px) {
+@media (max-width: 765px) {
 	.hero {
 		padding: var(--space-7) 0;
 	}
 
 	.hero__intro {
-		gap: 0.9rem;
+		align-items: flex-start;
+		gap: 0.85rem;
 	}
 
 	.hero__title {
-		font-size: clamp(2.3rem, 9vw, 3rem);
+		font-size: clamp(1.9rem, 7vw, 2.8rem);
 	}
 
 	.hero__title-accent {
-		font-size: clamp(1.15rem, 5vw, 1.5rem);
+		font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+	}
+
+	.hero__copy {
+		margin-top: var(--space-4);
+		max-width: none;
 	}
 
 	.hero__summary {
 		font-size: 1rem;
 	}
 
-	.hero__profile {
-		margin-top: var(--space-1);
+	.hero__supporting-copy {
+		margin-top: var(--space-3);
 	}
 
 	.hero__actions {
 		margin-top: var(--space-4);
+	}
+
+	.hero__profile-image {
+		width: 120px;
+		height: 120px;
 	}
 }

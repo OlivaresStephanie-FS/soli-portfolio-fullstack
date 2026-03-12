@@ -8,7 +8,7 @@ function Hero() {
 			<Container className="hero__inner">
 				<div className="hero__content">
 					<div className="hero__intro">
-						<div className="hero__text">
+						<div className="hero__identity">
 							<p className="eyebrow">Soli NYC</p>
 
 							<h1 className="hero__title">
@@ -17,33 +17,6 @@ function Hero() {
 									Full-Stack MERN Developer
 								</span>
 							</h1>
-
-							<p className="hero__summary">
-								I build modern, scalable web applications with
-								React, Node.js, MongoDB, and cloud-based tools.
-							</p>
-
-							<p className="hero__supporting-copy">
-								With a background in operations and systems
-								management, I bring a practical, problem-solving
-								mindset to development — creating applications
-								that are both technically sound and genuinely
-								useful.
-							</p>
-
-							<div className="hero__actions">
-								<a
-									href="#projects"
-									className="button button--primary">
-									View Projects
-								</a>
-
-								<a
-									href="#contact"
-									className="button button--secondary">
-									Contact Me
-								</a>
-							</div>
 						</div>
 
 						<div className="hero__profile">
@@ -53,6 +26,30 @@ function Hero() {
 								className="hero__profile-image"
 							/>
 						</div>
+					</div>
+
+					<div className="hero__copy">
+						<p className="hero__summary">
+							I build modern, scalable web applications with
+							React, Node.js, MongoDB, and cloud-based tools.
+						</p>
+
+						<p className="hero__supporting-copy">
+							With a background in operations and systems
+							management, I bring a practical, problem-solving
+							mindset to development — creating applications that
+							are both technically sound and genuinely useful.
+						</p>
+					</div>
+
+					<div className="hero__actions">
+						<a href="#projects" className="button button--primary">
+							View Projects
+						</a>
+
+						<a href="#contact" className="button button--secondary">
+							Contact Me
+						</a>
 					</div>
 				</div>
 
