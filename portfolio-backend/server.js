@@ -32,6 +32,10 @@ app.get("/", (req, res) => {
 	res.json({ ok: true, message: "Portfolio backend is running." });
 });
 
+app.get("/health", (req, res) => {
+	res.status(200).json({ ok: true, status: "online" });
+});
+
 app.use("/api/contact", contactLimiter, require("./routes/contactRoutes"));
 
 const PORT = process.env.PORT || 3001;
