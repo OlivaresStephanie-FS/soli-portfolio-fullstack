@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Container from "../../ui/Container/Container";
 import ProjectCard from "../../projects/ProjectCard/ProjectCard";
-import projects from "../../../data/fallbackProjects";
+import { projects } from "../../../data/projects";
 
 import "./FeaturedProjects.css";
 

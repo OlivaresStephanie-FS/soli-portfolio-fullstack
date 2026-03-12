@@ -31,21 +31,17 @@ export default function SystemStatus() {
 	}, []);
 
 	return (
-		<div>
-			<strong>System Status:</strong>{" "}
-			{status === "checking" && "Checking API..."}
-			{status === "online" && (
-				<span>
-					🟢 API Online —{" "}
-					<a
-						href="https://soli-portfolio-api.onrender.com"
-						target="_blank"
-						rel="noopener noreferrer">
-						View Health
-					</a>
-				</span>
-			)}
-			{status === "offline" && "🔴 API Offline"}
+		<div className="system-status">
+			<span className="system-status__label">System Status</span>
+
+			<span
+				className={`system-status__badge system-status__badge--${status}`}>
+				<span className="system-status__dot"></span>
+
+				{status === "checking" && "Checking"}
+				{status === "online" && "Online"}
+				{status === "offline" && "Offline"}
+			</span>
 		</div>
 	);
 }

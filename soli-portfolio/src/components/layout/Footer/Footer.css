@@ -92,3 +92,44 @@
     }
 }
 
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.system-status__label {
+    color: var(--text-muted);
+}
+
+.system-status__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.system-status__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.system-status__badge--online {
+    color: #22c55e;
+}
+
+.system-status__badge--offline {
+    color: #ef4444;
+}
+
+.system-status__badge--checking {
+    color: #f59e0b;
+}

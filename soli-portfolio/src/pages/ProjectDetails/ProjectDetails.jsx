@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../../data/projects";
-import fallbackProjects from "../../data/fallbackProjects";
 import PageShell from "../../components/layout/PageShell/PageShell";
 import "./projectDetails.css";
 
@@ -12,8 +11,7 @@ export default function ProjectDetails() {
 		window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 	}, [slug]);
 
-	const allProjects = [...projects, ...fallbackProjects];
-	const project = allProjects.find((p) => p.slug === slug);
+	const project = projects.find((p) => p.slug === slug);
 
 	if (!project) {
 		return (
