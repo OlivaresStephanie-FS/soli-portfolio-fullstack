@@ -121,3 +121,11 @@
     width: 100%;
     height: auto;
 }
+
+.project-details {
+    padding-bottom: var(--space-10);
+}
+
+.project-section:last-of-type {
+    padding-bottom: var(--space-6);
+}

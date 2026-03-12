@@ -9,6 +9,7 @@ export default function SystemStatus() {
 				const res = await fetch(
 					"https://soli-portfolio-api.onrender.com",
 				);
+
 				if (res.ok) {
 					setStatus("online");
 				} else {
@@ -19,11 +20,18 @@ export default function SystemStatus() {
 			}
 		}
 
+		// run immediately
 		checkAPI();
+
+		// run every 5 minutes
+		const interval = setInterval(checkAPI, 300000);
+
+		// cleanup when component unmounts
+		return () => clearInterval(interval);
 	}, []);
 
 	return (
-		<div style={{ marginTop: "20px", fontSize: "0.9rem", opacity: 0.8 }}>
+		<div>
 			<strong>System Status:</strong>{" "}
 			{status === "checking" && "Checking API..."}
 			{status === "online" && (
