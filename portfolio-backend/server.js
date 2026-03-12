@@ -8,9 +8,20 @@ const app = express();
 
 connectDB();
 
+const allowedOrigins = [
+	"https://soli.nyc",
+	"https://soli-portfolio-fullstack.netlify.app",
+];
+
 app.use(
 	cors({
-		origin: process.env.CLIENT_URL,
+		origin: function (origin, callback) {
+			if (!origin || allowedOrigins.includes(origin)) {
+				callback(null, true);
+			} else {
+				callback(new Error("Not allowed by CORS"));
+			}
+		},
 		credentials: true,
 	}),
 );
