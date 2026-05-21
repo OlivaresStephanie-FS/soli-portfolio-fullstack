@@ -29,7 +29,7 @@ function Footer() {
 					</div>
 				</Link>
 				<div className="site-footer__meta">
-					<p>© {year} soli.nyc</p>
+					<p>© {year} SOLINYC LLC</p>
 					<SystemStatus />
 				</div>
 			</Container>

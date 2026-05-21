@@ -9,7 +9,7 @@ function Hero() {
 				<div className="hero__content">
 					<div className="hero__intro">
 						<div className="hero__identity">
-							<p className="eyebrow">Soli NYC</p>
+							<p className="eyebrow">SOLINYC</p>
 
 							<h1 className="hero__title">
 								Stephanie Olivares
