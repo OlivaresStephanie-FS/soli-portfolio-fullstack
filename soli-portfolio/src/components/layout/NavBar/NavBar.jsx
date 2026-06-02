@@ -29,6 +29,11 @@ function Navbar() {
 						About
 					</Link>
 
+
+					<Link to="/#services" className="site-nav__link">
+						Services
+					</Link>
+
 					<Link to="/#projects" className="site-nav__link">
 						Projects
 					</Link>
