@@ -34,7 +34,7 @@ app.use(
 			},
 		},
 		crossOriginEmbedderPolicy: false, // Adjust based on your needs
-	})
+	}),
 );
 
 // 2. Request Size Limits - BEFORE body parsers
@@ -52,22 +52,26 @@ app.use(hpp());
 
 // 5. CORS Configuration
 const allowedOrigins = [
+	process.env.CLIENT_URL,
 	"https://soli.nyc",
-	"https://soli-portfolio-fullstack.netlify.app",
-];
+	"https://www.soli.nyc",
+].filter(Boolean);
 
 app.use(
 	cors({
-		origin: function (origin, callback) {
-			// Allow requests with no origin (mobile apps, Postman, etc.)
-			if (!origin || allowedOrigins.includes(origin)) {
-				callback(null, true);
-			} else {
-				callback(new Error("Not allowed by CORS"));
+		origin(origin, callback) {
+			if (
+				!origin ||
+				allowedOrigins.includes(origin) ||
+				origin.startsWith("http://localhost:")
+			) {
+				return callback(null, true);
 			}
+
+			return callback(new Error("Not allowed by CORS"));
 		},
 		credentials: true,
-	})
+	}),
 );
 
 // ============================================
@@ -151,6 +155,8 @@ const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
 	console.log(`🚀 Server running on port ${PORT}`);
-	console.log(`🔒 Security: Helmet, Rate Limiting, Input Sanitization enabled`);
+	console.log(
+		`🔒 Security: Helmet, Rate Limiting, Input Sanitization enabled`,
+	);
 	console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
 });
