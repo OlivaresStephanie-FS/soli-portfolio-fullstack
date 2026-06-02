@@ -1,6 +1,7 @@
 import PageShell from "../../components/layout/PageShell/PageShell";
 import Hero from "../../components/sections/Hero/Hero";
 import About from "../../components/sections/About/About";
+import Services from "../../components/sections/Services/Services";
 import FeaturedProjects from "../../components/sections/FeaturedProjects/FeaturedProjects";
 import Skills from "../../components/sections/Skills/Skills";
 import Experience from "../../components/sections/Experience/Experience";
@@ -15,6 +16,10 @@ function Home() {
 
 			<Reveal>
 				<About />
+			</Reveal>
+
+			<Reveal>
+				<Services />
 			</Reveal>
 
 			<Reveal>
