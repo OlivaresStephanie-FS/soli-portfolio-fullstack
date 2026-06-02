@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Container from "../../ui/Container/Container";
-import logo from "../../../assets/branding/solinyc-logo.png";
+import logo from "@/assets/branding/solinyc-logo.png";
 import "./NavBar.css";
 
 function Navbar() {
@@ -10,9 +10,10 @@ function Navbar() {
 				<Link to="/" className="site-brand" aria-label="Go to homepage">
 					<img
 						src={logo}
-						alt="Soli NYC logo"
+						alt="SOLINYC logo"
 						className="site-brand__logo"
 					/>
+
 					<div className="site-brand__text">
 						<span className="site-brand__name">
 							Stephanie Olivares
