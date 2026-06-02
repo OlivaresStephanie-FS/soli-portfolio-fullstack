@@ -1,31 +1,73 @@
 :root {
-    --bg: #0b1020;
-    --bg-elevated: #121933;
-    --surface: #18213f;
-    --text: #f5f7ff;
-    --text-muted: #b8c0dc;
-    --accent: #8b5cf6;
-    --accent-2: #c4b5fd;
-    --border: rgba(255, 255, 255, 0.12);
+	/* Brand Palette */
+	--brand-lavender: #a990b0;
+	--brand-plum: #610158;
+	--brand-blue: #3f7fa0;
+	--brand-teal: #0f627c;
+	--brand-black: #000000;
+	--brand-white: #ffffff;
 
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.18);
-    --radius-sm: 10px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
+	/* Backgrounds */
+	--bg: #a990b0;
+	--bg-soft: #a990b0;
+	--bg-elevated: #ffffff;
+	--surface: #ffffff;
+	--surface-strong: #ffffff;
+	--card-bg: #ffffff;
 
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.5rem;
-    --space-6: 2rem;
-    --space-7: 3rem;
-    --space-8: 4rem;
-    --space-9: 6rem;
+	/* Header / Footer */
+	--header-bg: #ffffff;
+	--footer-bg: #ffffff;
 
-    --container: 1200px;
+	/* Text */
+	--text: #1b1020;
+	--text-muted: #4c3652;
+	--text-on-dark: #ffffff;
+	--text-on-light: #1b1020;
+	--text-on-card: #1b1020;
+	--text-muted-on-card: #4c3652;
 
-    --font-sans:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+	/* Accents */
+	--accent: #610158;
+	--accent-2: #0f627c;
+	--accent-blue: #3f7fa0;
+	--accent-teal: #0f627c;
+
+	/* Status */
+	--success: #0f627c;
+	--info: #3f7fa0;
+
+	/* Borders */
+	--border: rgba(97, 1, 88, 0.18);
+	--border-card: rgba(97, 1, 88, 0.16);
+
+	/* Shadows */
+	--shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.14);
+	--shadow-medium: 0 25px 70px rgba(0, 0, 0, 0.2);
+
+	/* Radius */
+	--radius-sm: 12px;
+	--radius-md: 18px;
+	--radius-lg: 28px;
+
+	/* Spacing */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.5rem;
+	--space-6: 2rem;
+	--space-7: 3rem;
+	--space-8: 4rem;
+	--space-9: 6rem;
+	--space-10: 6rem;
+	--space-12: 8rem;
+
+	/* Container */
+	--container: 1200px;
+	--container-width: 1200px;
+
+	/* Fonts */
+	--font-sans: Inter, ui-sans-serif, system-ui, -apple-system,
+		BlinkMacSystemFont, "Segoe UI", sans-serif;
 }

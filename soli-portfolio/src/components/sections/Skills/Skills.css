@@ -1,55 +1,73 @@
 .skills-section {
-    padding: var(--space-9) 0;
-    border-top: 1px solid var(--border);
+	padding: var(--space-9) 0;
+	border-top: 1px solid var(--border);
 }
 
 .skills-section__intro {
-    max-width: 760px;
-    margin-bottom: var(--space-7);
+	max-width: 760px;
+	margin-bottom: var(--space-7);
+}
+
+.skills-section__intro h2 {
+	color: var(--text);
 }
 
 .skills-section__description {
-    margin-top: var(--space-3);
+	margin-top: var(--space-3);
+	color: var(--text-muted);
 }
 
 .skills-section__grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-5);
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--space-5);
 }
 
 .skills-card {
-    padding: var(--space-5);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.03);
-    box-shadow: var(--shadow-soft);
+	padding: var(--space-5);
+	border: 1px solid var(--border-card);
+	border-radius: var(--radius-md);
+	background: var(--card-bg);
+	color: var(--text-on-card);
+	box-shadow: var(--shadow-soft);
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.skills-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(97, 1, 88, 0.18);
+	box-shadow: 0 14px 32px rgba(97, 1, 88, 0.12);
 }
 
 .skills-card__title {
-    margin-bottom: var(--space-4);
+	margin-bottom: var(--space-4);
+	color: var(--brand-plum);
 }
 
 .skills-card__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .skills-card__item {
-    padding: 0.55rem 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text);
-    font-size: 0.9rem;
+	padding: 0.55rem 0.8rem;
+	border: 1px solid var(--border-card);
+	border-radius: 999px;
+	background: #ffffff;
+	color: var(--text-on-card);
+	font-size: 0.9rem;
+	font-weight: 500;
 }
 
 @media (max-width: 980px) {
-    .skills-section__grid {
-        grid-template-columns: 1fr;
-    }
+	.skills-section__grid {
+		grid-template-columns: 1fr;
+	}
 }

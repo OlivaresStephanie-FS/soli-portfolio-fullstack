@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../../ui/Container/Container";
 import SystemStatus from "../../SystemStatus";
-import logo from "../../../assets/branding/solinyc-logo-footer.png";
+import { solinycLogo } from "@/assets/branding";
 import "./Footer.css";
 
 function Footer() {
@@ -11,23 +11,23 @@ function Footer() {
 		<footer className="site-footer">
 			<Container className="site-footer__inner">
 				<Link to="/" className="site-footer__brand">
-					<div className="site-footer__brand">
-						<img
-							src={logo}
-							alt="Soli NYC logo"
-							className="site-footer__logo"
-						/>
+					<img
+						src={solinycLogo}
+						alt="SOLINYC logo"
+						className="site-footer__logo"
+					/>
 
-						<div className="site-footer__brand-text">
-							<p className="site-footer__name">
-								Stephanie Olivares
-							</p>
-							<p className="site-footer__role">
-								Full-Stack MERN Developer
-							</p>
-						</div>
+					<div className="site-footer__brand-text">
+						<p className="site-footer__name">
+							Stephanie Olivares
+						</p>
+
+						<p className="site-footer__role">
+							Full-Stack MERN Developer
+						</p>
 					</div>
 				</Link>
+
 				<div className="site-footer__meta">
 					<p>© {year} SOLINYC LLC</p>
 					<SystemStatus />

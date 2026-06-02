@@ -33,29 +33,27 @@
 }
 
 .button--primary {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	background: var(--brand-plum);
+	color: #ffffff;
+	border: 1px solid var(--brand-plum);
 }
 
 .button--primary:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+	background: var(--brand-teal);
+	color: #ffffff;
+	border-color: var(--brand-teal);
 }
 
 .button--secondary {
-    border-color: var(--border);
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--text);
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	background: #ffffff;
+	color: var(--brand-plum);
+	border: 1px solid rgba(97, 1, 88, 0.22);
 }
 
 .button--secondary:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.24);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+	background: var(--brand-teal);
+	color: #ffffff;
+	border-color: var(--brand-teal);
 }
 
 .button:active {

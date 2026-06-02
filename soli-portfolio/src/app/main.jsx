@@ -6,7 +6,6 @@ import "../styles/variables.css";
 import "../styles/globals.css";
 import "../styles/typography.css";
 import "../styles/utilities.css";
-import "../styles/animations.css";
 import "../components/ui/Reveal/Reveal.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
