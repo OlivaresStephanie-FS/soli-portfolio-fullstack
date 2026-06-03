@@ -12,6 +12,7 @@ export default function ProjectDetails() {
 	}, [slug]);
 
 	const project = projects.find((p) => p.slug === slug);
+	const currentIndex = projects.findIndex((p) => p.slug === slug);
 
 	if (!project) {
 		return (
@@ -23,13 +24,33 @@ export default function ProjectDetails() {
 		);
 	}
 
+	const previousProject =
+		currentIndex > 0 ? projects[currentIndex - 1] : projects[projects.length - 1];
+
+	const nextProject =
+		currentIndex < projects.length - 1 ? projects[currentIndex + 1] : projects[0];
+
 	const liveUrl = project.liveUrl || project.live || "";
 	const githubUrl = project.githubUrl || project.github || "";
 	const techStack = project.tech || project.stack || [];
-	const screenshots =
-		project.screenshots ||
-		project.gallery?.map((item) => item.src) ||
-		(project.image ? [project.image] : []);
+	const results = project.results || [];
+
+	const gallery =
+		project.gallery ||
+		project.screenshots?.map((src) => ({
+			src,
+			alt: `${project.title} screenshot`,
+			caption: "",
+		})) ||
+		(project.image
+			? [
+					{
+						src: project.image,
+						alt: project.title,
+						caption: "",
+					},
+			  ]
+			: []);
 
 	const tagline =
 		project.tagline ||
@@ -42,9 +63,7 @@ export default function ProjectDetails() {
 				<section className="project-hero">
 					<div className="container">
 						<div className="project-back">
-							<Link
-								to="/#projects"
-								className="project-back__link">
+							<Link to="/#projects" className="project-back__link">
 								← Back to Projects
 							</Link>
 						</div>
@@ -60,15 +79,26 @@ export default function ProjectDetails() {
 
 						<p className="project-tagline">{tagline}</p>
 
+						{(project.role || project.duration) && (
+							<div className="project-meta">
+								{project.role && <span>{project.role}</span>}
+								{project.duration && <span>{project.duration}</span>}
+							</div>
+						)}
+
 						<div className="project-links">
-							{liveUrl && (
+							{liveUrl ? (
 								<a
 									href={liveUrl}
 									target="_blank"
 									rel="noreferrer"
 									className="project-link-button">
-									Live Site
+									Live Demo
 								</a>
+							) : (
+								<span className="project-link-button project-link-button--disabled">
+									Live Demo Coming Soon
+								</span>
 							)}
 
 							{githubUrl && (
@@ -84,24 +114,42 @@ export default function ProjectDetails() {
 					</div>
 				</section>
 
-				{screenshots.length > 0 && (
+				{gallery.length > 0 && (
 					<section className="project-section">
 						<div className="container">
 							<h2>Project Preview</h2>
 
 							<div className="project-gallery">
-								{screenshots.map((shot, index) => (
-									<div
+								{gallery.map((item, index) => (
+									<figure
 										className="project-gallery__item"
-										key={`${shot}-${index}`}>
+										key={`${item.src}-${index}`}>
 										<img
-											src={shot}
-											alt={`${project.title} screenshot ${index + 1}`}
+											src={item.src}
+											alt={
+												item.alt ||
+												`${project.title} screenshot ${index + 1}`
+											}
 											className="project-gallery__image"
 										/>
-									</div>
+
+										{item.caption && (
+											<figcaption className="project-gallery__caption">
+												{item.caption}
+											</figcaption>
+										)}
+									</figure>
 								))}
 							</div>
+						</div>
+					</section>
+				)}
+
+				{project.overview && (
+					<section className="project-section">
+						<div className="container">
+							<h2>Overview</h2>
+							<p>{project.overview}</p>
 						</div>
 					</section>
 				)}
@@ -120,6 +168,19 @@ export default function ProjectDetails() {
 						<div className="container">
 							<h2>Solution</h2>
 							<p>{project.solution}</p>
+						</div>
+					</section>
+				)}
+
+				{results.length > 0 && (
+					<section className="project-section">
+						<div className="container">
+							<h2>Results</h2>
+							<ul className="project-list">
+								{results.map((result) => (
+									<li key={result}>{result}</li>
+								))}
+							</ul>
 						</div>
 					</section>
 				)}
@@ -163,14 +224,23 @@ export default function ProjectDetails() {
 					</section>
 				)}
 
-				{project.overview && !project.solution && (
-					<section className="project-section">
-						<div className="container">
-							<h2>Overview</h2>
-							<p>{project.overview}</p>
-						</div>
-					</section>
-				)}
+				<section className="project-navigation">
+					<div className="container project-navigation__inner">
+						<Link
+							to={`/projects/${previousProject.slug}`}
+							className="project-navigation__link">
+							<span>Previous Project</span>
+							<strong>← {previousProject.title}</strong>
+						</Link>
+
+						<Link
+							to={`/projects/${nextProject.slug}`}
+							className="project-navigation__link project-navigation__link--next">
+							<span>Next Project</span>
+							<strong>{nextProject.title} →</strong>
+						</Link>
+					</div>
+				</section>
 			</div>
 		</PageShell>
 	);
