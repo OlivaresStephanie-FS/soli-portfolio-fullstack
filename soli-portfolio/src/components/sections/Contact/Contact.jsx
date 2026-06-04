@@ -1,14 +1,22 @@
 import { useState } from "react";
 import Container from "../../ui/Container/Container";
+import GeneralContactForm from "./GeneralContactForm";
+import QuoteRequestForm from "./QuoteRequestForm";
 import "./Contact.css";
 
+const commonServices = [
+	"Business Websites",
+	"Customer Portals",
+	"Admin Dashboards",
+	"Quote Management Systems",
+	"Review & Testimonial Platforms",
+	"Internal Business Tools",
+	"API Integrations",
+	"Ongoing Maintenance & Support",
+];
+
 function Contact() {
-	const [form, setForm] = useState({
-		name: "",
-		email: "",
-		subject: "",
-		message: "",
-	});
+	const [activeForm, setActiveForm] = useState("general");
 
 	const [status, setStatus] = useState({
 		loading: false,
@@ -16,18 +24,15 @@ function Contact() {
 		success: "",
 	});
 
-	function handleChange(e) {
-		const { name, value } = e.target;
-
-		setForm((prev) => ({
-			...prev,
-			[name]: value,
-		}));
+	function resetStatus() {
+		setStatus({
+			loading: false,
+			error: "",
+			success: "",
+		});
 	}
 
-	async function handleSubmit(e) {
-		e.preventDefault();
-
+	async function submitToApi(payload, successMessage) {
 		setStatus({
 			loading: true,
 			error: "",
@@ -42,7 +47,7 @@ function Contact() {
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify(form),
+					body: JSON.stringify(payload),
 				},
 			);
 
@@ -61,21 +66,18 @@ function Contact() {
 			setStatus({
 				loading: false,
 				error: "",
-				success: "Message sent successfully.",
+				success: successMessage,
 			});
 
-			setForm({
-				name: "",
-				email: "",
-				subject: "",
-				message: "",
-			});
+			return true;
 		} catch (error) {
 			setStatus({
 				loading: false,
 				error: error.message || "Server error. Please try again.",
 				success: "",
 			});
+
+			return false;
 		}
 	}
 
@@ -85,103 +87,103 @@ function Contact() {
 				<div className="contact-section__inner">
 					<div className="contact-section__content">
 						<p className="eyebrow">Contact</p>
-						<h2>Let’s build something thoughtful and useful.</h2>
+						<h2>
+							Need a website, business platform, or custom
+							workflow solution?
+						</h2>
+
 						<p className="contact-section__text">
 							I’m open to freelance opportunities, collaborative
 							projects, and roles where I can contribute as a
 							full-stack developer.
 						</p>
+
 						<p className="contact-section__text">
-							The best way to reach me is by email, or through
-							LinkedIn and GitHub.
+							Whether you're launching a new business, improving
+							an existing process, or replacing spreadsheets and
+							manual workflows, I can help design and build a
+							solution tailored to your needs.
 						</p>
+
+						<div className="contact-section__services-card">
+							<h3>Services I Commonly Build</h3>
+
+							<ul>
+								{commonServices.map((service) => (
+									<li key={service}>{service}</li>
+								))}
+							</ul>
+						</div>
 					</div>
 
 					<div className="contact-section__card">
-						<form
-							className="contact-section__form"
-							onSubmit={handleSubmit}>
-							<input
-								className="contact-section__input"
-								type="text"
-								name="name"
-								placeholder="Your name"
-								value={form.name}
-								onChange={handleChange}
-								required
-							/>
+						<div className="contact-section__helper">
+							<p>
+								<strong>Choose "General Inquiry"</strong> for
+								questions and collaboration opportunities.
+							</p>
+							<p>
+								<strong>Choose "Request a Quote"</strong> for
+								websites, dashboards, business platforms, or
+								custom software projects.
+							</p>
+						</div>
 
-							<input
-								className="contact-section__input"
-								type="email"
-								name="email"
-								placeholder="Your email"
-								value={form.email}
-								onChange={handleChange}
-								required
-							/>
-
-							<input
-								className="contact-section__input"
-								type="text"
-								name="subject"
-								placeholder="Subject"
-								value={form.subject}
-								onChange={handleChange}
-								required
-							/>
-
-							<textarea
-								className="contact-section__textarea"
-								name="message"
-								placeholder="Your message"
-								value={form.message}
-								onChange={handleChange}
-								rows="6"
-								required
-							/>
-
+						<div className="contact-section__tabs">
 							<button
-								className="contact-section__button"
-								type="submit"
-								disabled={status.loading}>
-								{status.loading ? "Sending..." : "Send Message"}
+								type="button"
+								className={`contact-section__tab ${
+									activeForm === "general"
+										? "contact-section__tab--active"
+										: ""
+								}`}
+								onClick={() => {
+									setActiveForm("general");
+									resetStatus();
+								}}>
+								General Inquiry
 							</button>
 
-							{status.error ? (
-								<p className="contact-section__status contact-section__status--error">
-									{status.error}
-								</p>
-							) : null}
+							<button
+								type="button"
+								className={`contact-section__tab ${
+									activeForm === "quote"
+										? "contact-section__tab--active"
+										: ""
+								}`}
+								onClick={() => {
+									setActiveForm("quote");
+									resetStatus();
+								}}>
+								Request a Quote
+							</button>
+						</div>
 
-							{status.success ? (
-								<p className="contact-section__status contact-section__status--success">
-									{status.success}
-								</p>
-							) : null}
-						</form>
+						{activeForm === "general" ? (
+							<GeneralContactForm
+								status={status}
+								submitToApi={submitToApi}
+							/>
+						) : (
+							<QuoteRequestForm
+								status={status}
+								submitToApi={submitToApi}
+							/>
+						)}
 
-						<a
-							className="contact-section__link"
-							href="mailto:solinyc@outlook.com">
-							soli@soli.nyc
-						</a>
+						{status.error ? (
+							<p className="contact-section__status contact-section__status--error">
+								{status.error}
+							</p>
+						) : null}
 
-						<a
-							className="contact-section__link"
-							href="https://www.linkedin.com/solinyc"
-							target="_blank"
-							rel="noreferrer">
-							LinkedIn
-						</a>
+						{status.success ? (
+							<p className="contact-section__status contact-section__status--success">
+								{status.success}
+							</p>
+						) : null}
 
-						<a
-							className="contact-section__link"
-							href="https://github.com/OlivaresStephanie-FS"
-							target="_blank"
-							rel="noreferrer">
-							GitHub
-						</a>
+						
 					</div>
 				</div>
 			</Container>
