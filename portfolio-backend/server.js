@@ -9,6 +9,9 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+// Trust Render's proxy so express-rate-limit can safely read client IPs
+app.set("trust proxy", 1);
+
 // Connect to MongoDB
 connectDB();
 
@@ -23,7 +26,7 @@ app.use(
 		contentSecurityPolicy: {
 			directives: {
 				defaultSrc: ["'self'"],
-				styleSrc: ["'self'", "'unsafe-inline'"], // Allow inline styles for React
+				styleSrc: ["'self'", "'unsafe-inline'"],
 				scriptSrc: ["'self'"],
 				imgSrc: ["'self'", "data:", "https:"],
 				connectSrc: ["'self'"],
@@ -33,7 +36,7 @@ app.use(
 				frameSrc: ["'none'"],
 			},
 		},
-		crossOriginEmbedderPolicy: false, // Adjust based on your needs
+		crossOriginEmbedderPolicy: false,
 	}),
 );
 
@@ -80,8 +83,8 @@ app.use(
 
 // General API rate limiter
 const apiLimiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 100, // 100 requests per 15 minutes
+	windowMs: 15 * 60 * 1000,
+	max: 100,
 	message: {
 		ok: false,
 		message: "Too many requests from this IP. Please try again later.",
@@ -92,8 +95,8 @@ const apiLimiter = rateLimit({
 
 // Strict rate limiter for contact form
 const contactLimiter = rateLimit({
-	windowMs: 60 * 60 * 1000, // 1 hour
-	max: 5, // 5 submissions per hour
+	windowMs: 60 * 60 * 1000,
+	max: 5,
 	message: {
 		ok: false,
 		message: "Too many contact requests. Please try again later.",
@@ -117,7 +120,7 @@ app.get("/", (req, res) => {
 });
 
 // API routes with rate limiting
-app.use("/api", apiLimiter); // Apply general rate limit to all /api routes
+app.use("/api", apiLimiter);
 app.use("/api/contact", contactLimiter, require("./routes/contactRoutes"));
 
 // ============================================
@@ -134,10 +137,8 @@ app.use((req, res) => {
 
 // Global Error Handler
 app.use((err, req, res, next) => {
-	// Log error for debugging (consider using Winston/Pino in production)
 	console.error(err.stack);
 
-	// Don't leak error details in production
 	const isDevelopment = process.env.NODE_ENV === "development";
 
 	res.status(err.status || 500).json({

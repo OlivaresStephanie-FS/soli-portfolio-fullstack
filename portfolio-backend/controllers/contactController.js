@@ -109,7 +109,9 @@ const submitContactForm = async (req, res) => {
 	}
 
 	const { name, email, subject, message } = req.body;
-
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_TO:", process.env.EMAIL_TO);
+console.log("Sending to:", process.env.EMAIL_TO || process.env.EMAIL_USER);
 	const mailOptions = {
 		from: process.env.EMAIL_USER,
 		to: process.env.EMAIL_TO || process.env.EMAIL_USER,
