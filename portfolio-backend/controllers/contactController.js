@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const LOGO_URL =
-	process.env.EMAIL_LOGO_URL || "https://soli.nyc/solinyc-logo.png";
+	process.env.EMAIL_LOGO_URL || "https://soli.nyc/favicon/favicon.ico";
 
 function escapeHtml(value = "") {
 	return String(value)
