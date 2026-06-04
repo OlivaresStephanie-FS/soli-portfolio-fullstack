@@ -28,10 +28,10 @@ const contactValidation = [
 		.escape(),
 
 	body("message")
-		.trim()
-		.isLength({ min: 10, max: 1000 })
-		.withMessage("Message must be between 10 and 1000 characters")
-		.escape(),
+	.trim()
+	.isLength({ min: 10, max: 5000 })
+	.withMessage("Message must be between 10 and 5000 characters")
+	.escape(),
 ];
 
 // POST /api/contact - Submit contact form
