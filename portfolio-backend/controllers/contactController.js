@@ -11,6 +11,9 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
+const LOGO_URL =
+	process.env.EMAIL_LOGO_URL || "https://soli.nyc/solinyc-logo.png";
+
 function escapeHtml(value = "") {
 	return String(value)
 		.replace(/&/g, "&amp;")
@@ -25,30 +28,32 @@ function formatMessageText(message = "") {
 }
 
 function buildEmailTemplate({ name, email, subject, message }) {
-	const isQuoteRequest = subject
-		.toLowerCase()
-		.includes("quote request");
+	const isQuoteRequest = subject.toLowerCase().includes("quote request");
 
 	return `
 		<div style="font-family: Arial, sans-serif; background:#f6f1f7; padding:24px; color:#1b1020;">
 			<div style="max-width:720px; margin:0 auto; background:#ffffff; border-radius:18px; overflow:hidden; border:1px solid rgba(97,1,88,0.16);">
 				
+				<div style="text-align:center; padding:24px 24px 18px; background:#ffffff;">
+					<img
+						src="${LOGO_URL}"
+						alt="SOLINYC LLC"
+						width="96"
+						style="display:block; margin:0 auto; max-width:96px; height:auto;"
+					/>
+				</div>
+
 				<div style="background:#610158; color:#ffffff; padding:22px 26px;">
 					<p style="margin:0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase;">
 						SOLINYC LLC
 					</p>
 
 					<h2 style="margin:8px 0 0; font-size:24px;">
-						${
-							isQuoteRequest
-								? "New Quote Request"
-								: "New Contact Form Submission"
-						}
+						${isQuoteRequest ? "New Quote Request" : "New Contact Form Submission"}
 					</h2>
 				</div>
 
 				<div style="padding:26px;">
-
 					<div style="margin-bottom:24px;">
 						<h3 style="margin:0 0 12px; color:#610158;">
 							Contact Information
@@ -76,18 +81,13 @@ function buildEmailTemplate({ name, email, subject, message }) {
 
 					<div style="border-top:1px solid rgba(97,1,88,0.14); padding-top:24px;">
 						<h3 style="margin:0 0 12px; color:#610158;">
-							${
-								isQuoteRequest
-									? "Project Intake Details"
-									: "Message"
-							}
+							${isQuoteRequest ? "Project Intake Details" : "Message"}
 						</h3>
 
 						<div style="line-height:1.7; font-size:15px;">
 							${formatMessageText(message)}
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -109,12 +109,7 @@ const submitContactForm = async (req, res) => {
 	}
 
 	const { name, email, subject, message } = req.body;
-console.log("ALL EMAIL VARS:", {
-  EMAIL_USER: process.env.EMAIL_USER,
-  EMAIL_TO: process.env.EMAIL_TO,
-  EMAIL_HOST: process.env.EMAIL_HOST,
-});
-console.log("Sending to:", process.env.EMAIL_TO || process.env.EMAIL_USER);
+
 	const mailOptions = {
 		from: process.env.EMAIL_USER,
 		to: process.env.EMAIL_TO || process.env.EMAIL_USER,
