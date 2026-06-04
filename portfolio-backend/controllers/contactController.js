@@ -36,10 +36,10 @@ function buildEmailTemplate({ name, email, subject, message }) {
 				
 				<div style="text-align:center; padding:24px 24px 18px; background:#ffffff;">
 					<img
-						src="${LOGO_URL}"
+						src="https://soli.nyc/favicon/android-chrome-512x512.png"
 						alt="SOLINYC LLC"
-						width="96"
-						style="display:block; margin:0 auto; max-width:96px; height:auto;"
+						width="120"
+						style="display:block; margin:0 auto;"
 					/>
 				</div>
 
