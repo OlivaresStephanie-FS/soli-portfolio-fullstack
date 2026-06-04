@@ -12,7 +12,8 @@ const transporter = nodemailer.createTransport({
 });
 
 const LOGO_URL =
-	process.env.EMAIL_LOGO_URL || "https://soli.nyc/favicon/android-chrome-512x512.png";
+	process.env.EMAIL_LOGO_URL ||
+	"https://soli.nyc/favicon/android-chrome-512x512.png";
 
 function escapeHtml(value = "") {
 	return String(value)
@@ -34,21 +35,15 @@ function buildEmailTemplate({ name, email, subject, message }) {
 		<div style="font-family: Arial, sans-serif; background:#f6f1f7; padding:24px; color:#1b1020;">
 			<div style="max-width:720px; margin:0 auto; background:#ffffff; border-radius:18px; overflow:hidden; border:1px solid rgba(97,1,88,0.16);">
 				
-				<div style="text-align:center; padding:24px 24px 18px; background:#ffffff;">
+				<div style="background:#610158; color:#ffffff; padding:24px 26px 26px; text-align:center;">
 					<img
-						src="https://soli.nyc/favicon/android-chrome-512x512.png"
+						src="${LOGO_URL}"
 						alt="SOLINYC LLC"
-						width="120"
-						style="display:block; margin:0 auto;"
+						width="76"
+						style="display:block; margin:0 auto 16px; max-width:76px; height:auto; border:0;"
 					/>
-				</div>
 
-				<div style="background:#610158; color:#ffffff; padding:22px 26px;">
-					<p style="margin:0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase;">
-						SOLINYC LLC
-					</p>
-
-					<h2 style="margin:8px 0 0; font-size:24px;">
+					<h2 style="margin:0; font-size:24px; line-height:1.25;">
 						${isQuoteRequest ? "New Quote Request" : "New Contact Form Submission"}
 					</h2>
 				</div>
