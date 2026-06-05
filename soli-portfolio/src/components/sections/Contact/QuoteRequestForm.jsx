@@ -93,6 +93,7 @@ function QuoteRequestForm({ status, submitToApi }) {
 	async function handleQuoteSubmit(e) {
 		e.preventDefault();
 
+		alert("Quote submit fired");
 		const alreadyHas =
 			[
 				quoteForm.hasDomain && "Domain",
@@ -282,7 +283,9 @@ ${quoteForm.additionalNotes || "None provided"}
 
 				<div className="contact-section__options contact-section__options--compact">
 					{desiredFeatures.map((feature) => (
-						<label className="contact-section__option" key={feature}>
+						<label
+							className="contact-section__option"
+							key={feature}>
 							<input
 								type="checkbox"
 								value={feature}
