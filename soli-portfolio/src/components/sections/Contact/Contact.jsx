@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Container from "../../ui/Container/Container";
 import GeneralContactForm from "./GeneralContactForm";
 import QuoteRequestForm from "./QuoteRequestForm";
@@ -17,12 +17,22 @@ const commonServices = [
 
 function Contact() {
 	const [activeForm, setActiveForm] = useState("general");
+	const statusRef = useRef(null);
 
 	const [status, setStatus] = useState({
 		loading: false,
 		error: "",
 		success: "",
 	});
+
+	useEffect(() => {
+		if ((status.error || status.success) && statusRef.current) {
+			statusRef.current.scrollIntoView({
+				behavior: "smooth",
+				block: "center",
+			});
+		}
+	}, [status.error, status.success]);
 
 	function resetStatus() {
 		setStatus({
@@ -40,16 +50,21 @@ function Contact() {
 		});
 
 		try {
-			const res = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/contact`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(payload),
+			const apiUrl = import.meta.env.VITE_API_URL;
+
+			if (!apiUrl) {
+				throw new Error(
+					"API URL is missing. Please check your environment variables.",
+				);
+			}
+
+			const res = await fetch(`${apiUrl}/api/contact`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
 				},
-			);
+				body: JSON.stringify(payload),
+			});
 
 			let data = {};
 
@@ -79,6 +94,24 @@ function Contact() {
 
 			return false;
 		}
+	}
+
+	function renderStatusMessage() {
+		return (
+			<div ref={statusRef}>
+				{status.error ? (
+					<p className="contact-section__status contact-section__status--error">
+						{status.error}
+					</p>
+				) : null}
+
+				{status.success ? (
+					<p className="contact-section__status contact-section__status--success">
+						{status.success}
+					</p>
+				) : null}
+			</div>
+		);
 	}
 
 	return (
@@ -159,6 +192,8 @@ function Contact() {
 							</button>
 						</div>
 
+						{renderStatusMessage()}
+
 						{activeForm === "general" ? (
 							<GeneralContactForm
 								status={status}
@@ -170,20 +205,6 @@ function Contact() {
 								submitToApi={submitToApi}
 							/>
 						)}
-
-						{status.error ? (
-							<p className="contact-section__status contact-section__status--error">
-								{status.error}
-							</p>
-						) : null}
-
-						{status.success ? (
-							<p className="contact-section__status contact-section__status--success">
-								{status.success}
-							</p>
-						) : null}
-
-						
 					</div>
 				</div>
 			</Container>
