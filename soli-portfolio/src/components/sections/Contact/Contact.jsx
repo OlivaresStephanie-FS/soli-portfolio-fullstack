@@ -75,7 +75,15 @@ function Contact() {
 			}
 
 			if (!res.ok) {
-				throw new Error(data.message || "Something went wrong.");
+				const validationDetails = data.errors
+					?.map((err) => `${err.field}: ${err.message}`)
+					.join(", ");
+
+				throw new Error(
+					validationDetails ||
+						data.message ||
+						"Something went wrong.",
+				);
 			}
 
 			setStatus({
