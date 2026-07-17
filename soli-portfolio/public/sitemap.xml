@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://soli.nyc/</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/contractor-platform</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/solinyc-portfolio</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/nodejs-mongodb-api</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/memory-lane-blog</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/authentication-crud-practice</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/netflix-clone</loc>
+	</url>
+	<url>
+		<loc>https://soli.nyc/projects/severance-promo-site</loc>
+	</url>
+</urlset>
