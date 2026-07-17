@@ -15,7 +15,7 @@ export default function SystemStatus() {
 				} else {
 					setStatus("offline");
 				}
-			} catch (err) {
+			} catch {
 				setStatus("offline");
 			}
 		}
