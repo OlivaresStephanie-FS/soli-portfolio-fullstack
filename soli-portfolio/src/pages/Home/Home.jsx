@@ -6,7 +6,6 @@ import FeaturedProjects from "../../components/sections/FeaturedProjects/Feature
 import Skills from "../../components/sections/Skills/Skills";
 import Experience from "../../components/sections/Experience/Experience";
 import Contact from "../../components/sections/Contact/Contact";
-import Footer from "../../components/layout/Footer/Footer";
 import Reveal from "../../components/ui/Reveal/Reveal";
 
 function Home() {

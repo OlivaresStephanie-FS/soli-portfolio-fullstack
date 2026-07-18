@@ -3,6 +3,40 @@
     margin: 0 auto;
 }
 
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: 1rem;
+	z-index: 10000;
+	padding: 0.75rem 1.1rem;
+	border: 2px solid var(--brand-teal);
+	border-radius: var(--radius-sm);
+	background: var(--brand-plum);
+	color: var(--brand-white);
+	font-weight: 700;
+	text-decoration: none;
+	transform: translateY(-160%);
+	transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+	transform: translateY(0);
+	outline: 2px solid var(--brand-teal);
+	outline-offset: 3px;
+}
+
 .eyebrow {
     margin-bottom: var(--space-3);
     color: var(--accent-2);

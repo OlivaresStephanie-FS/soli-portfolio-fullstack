@@ -70,7 +70,7 @@ function FeaturedProjects() {
 
 				<div
 					className="featured-projects__filters"
-					role="tablist"
+					role="group"
 					aria-label="Project filters">
 					{filters.map((filter) => {
 						const isActive = activeFilter === filter;
