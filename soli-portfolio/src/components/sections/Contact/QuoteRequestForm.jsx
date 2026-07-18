@@ -93,7 +93,6 @@ function QuoteRequestForm({ status, submitToApi }) {
 	async function handleQuoteSubmit(e) {
 		e.preventDefault();
 
-		alert("Quote submit fired");
 		const alreadyHas =
 			[
 				quoteForm.hasDomain && "Domain",

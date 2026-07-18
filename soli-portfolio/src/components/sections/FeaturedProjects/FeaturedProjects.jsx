@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Container from "../../ui/Container/Container";
 import ProjectCard from "../../projects/ProjectCard/ProjectCard";
 import { projects } from "../../../data/projects";
@@ -6,7 +6,10 @@ import { projects } from "../../../data/projects";
 import "./FeaturedProjects.css";
 
 function FeaturedProjects() {
-	const featured = projects.filter((project) => project.featured);
+	const featured = useMemo(
+		() => projects.filter((project) => project.featured),
+		[],
+	);
 
 	const filters = useMemo(() => {
 		const categories = featured.map((project) => project.category);
@@ -16,24 +19,41 @@ function FeaturedProjects() {
 	const [activeFilter, setActiveFilter] = useState("All");
 	const [displayedProjects, setDisplayedProjects] = useState(featured);
 	const [isTransitioning, setIsTransitioning] = useState(false);
+	const transitionTimeoutRef = useRef(null);
 
 	useEffect(() => {
+		return () => {
+			if (transitionTimeoutRef.current) {
+				clearTimeout(transitionTimeoutRef.current);
+			}
+		};
+	}, []);
+
+	function handleFilterChange(filter) {
+		if (filter === activeFilter) {
+			return;
+		}
+
+		setActiveFilter(filter);
 		setIsTransitioning(true);
 
-		const timeout = setTimeout(() => {
+		if (transitionTimeoutRef.current) {
+			clearTimeout(transitionTimeoutRef.current);
+		}
+
+		transitionTimeoutRef.current = setTimeout(() => {
 			const nextProjects =
-				activeFilter === "All"
+				filter === "All"
 					? featured
 					: featured.filter(
-							(project) => project.category === activeFilter,
+							(project) => project.category === filter,
 						);
 
 			setDisplayedProjects(nextProjects);
 			setIsTransitioning(false);
+			transitionTimeoutRef.current = null;
 		}, 180);
-
-		return () => clearTimeout(timeout);
-	}, [activeFilter]);
+	}
 
 	return (
 		<section className="featured-projects" id="projects">
@@ -64,7 +84,7 @@ function FeaturedProjects() {
 										? " featured-projects__filter--active"
 										: ""
 								}`}
-								onClick={() => setActiveFilter(filter)}
+								onClick={() => handleFilterChange(filter)}
 								aria-pressed={isActive}>
 								{filter}
 							</button>

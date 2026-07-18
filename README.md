@@ -22,15 +22,15 @@ This project demonstrates **real-world full-stack architecture** using React, No
 
 ## Homepage
 
-![Homepage](./screenshots/home.png)
+![Homepage](./soli-portfolio/public/screenshots/home.png)
 
 ## Projects
 
-![Projects](./screenshots/projects.png)
+![Projects](./soli-portfolio/public/screenshots/projects.png)
 
 ## Contact System
 
-![Contact](./screenshots/contact.png)
+![Contact](./soli-portfolio/public/screenshots/contact.png)
 
 ---
 

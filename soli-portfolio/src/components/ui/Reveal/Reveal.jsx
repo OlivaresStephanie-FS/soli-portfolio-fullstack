@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import useReveal from "../../../hooks/useReveal";
 import "./Reveal.css";
 
@@ -12,10 +13,13 @@ function Reveal({ as: Tag = "div", className = "", children }) {
 		.filter(Boolean)
 		.join(" ");
 
-	return (
-		<Tag ref={ref} className={classes}>
-			{children}
-		</Tag>
+	return createElement(
+		Tag,
+		{
+			ref,
+			className: classes,
+		},
+		children,
 	);
 }
 
