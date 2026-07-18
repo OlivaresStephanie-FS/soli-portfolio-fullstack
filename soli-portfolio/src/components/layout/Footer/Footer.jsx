@@ -30,7 +30,7 @@ function Footer() {
 
 				<div className="site-footer__socials">
 					<a href="mailto:soli@soli.nyc" aria-label="Email">
-						<MdEmail size={20} />
+						<MdEmail size={20} aria-hidden="true" />
 					</a>
 
 					<a
@@ -38,7 +38,7 @@ function Footer() {
 						target="_blank"
 						rel="noreferrer"
 						aria-label="LinkedIn">
-						<FaLinkedin size={20} />
+						<FaLinkedin size={20} aria-hidden="true" />
 					</a>
 
 					<a
@@ -46,7 +46,7 @@ function Footer() {
 						target="_blank"
 						rel="noreferrer"
 						aria-label="GitHub">
-						<FaGithub size={20} />
+						<FaGithub size={20} aria-hidden="true" />
 					</a>
 
 					<a
@@ -54,8 +54,7 @@ function Footer() {
 						target="_blank"
 						rel="noreferrer"
 						aria-label="Facebook">
-						{" "}
-						<FaFacebook size={20} />{" "}
+						<FaFacebook size={20} aria-hidden="true" />
 					</a>
 				</div>
 

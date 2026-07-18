@@ -30,7 +30,8 @@ body {
 	background: var(--bg);
 }
 
-main,
+/* Horizontal page padding stays on sections so wrapping content in
+   <main> does not double the inset. */
 section {
 	padding-left: 1rem;
 	padding-right: 1rem;

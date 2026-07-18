@@ -153,50 +153,85 @@ ${quoteForm.additionalNotes || "None provided"}
 	return (
 		<form
 			className="contact-section__form contact-section__form--quote"
-			onSubmit={handleQuoteSubmit}>
+			onSubmit={handleQuoteSubmit}
+			aria-busy={status.loading}>
 			<div className="contact-section__grid">
-				<input
-					className="contact-section__input"
-					type="text"
-					name="name"
-					placeholder="Your name"
-					value={quoteForm.name}
-					onChange={handleQuoteChange}
-					required
-				/>
+				<div>
+					<label className="visually-hidden" htmlFor="quote-name">
+						Your name
+					</label>
+					<input
+						id="quote-name"
+						className="contact-section__input"
+						type="text"
+						name="name"
+						placeholder="Your name"
+						value={quoteForm.name}
+						onChange={handleQuoteChange}
+						required
+						autoComplete="name"
+					/>
+				</div>
 
-				<input
-					className="contact-section__input"
-					type="text"
-					name="businessName"
-					placeholder="Business name"
-					value={quoteForm.businessName}
-					onChange={handleQuoteChange}
-				/>
+				<div>
+					<label
+						className="visually-hidden"
+						htmlFor="quote-business-name">
+						Business name
+					</label>
+					<input
+						id="quote-business-name"
+						className="contact-section__input"
+						type="text"
+						name="businessName"
+						placeholder="Business name"
+						value={quoteForm.businessName}
+						onChange={handleQuoteChange}
+						autoComplete="organization"
+					/>
+				</div>
 			</div>
 
 			<div className="contact-section__grid">
-				<input
-					className="contact-section__input"
-					type="email"
-					name="email"
-					placeholder="Email"
-					value={quoteForm.email}
-					onChange={handleQuoteChange}
-					required
-				/>
+				<div>
+					<label className="visually-hidden" htmlFor="quote-email">
+						Email
+					</label>
+					<input
+						id="quote-email"
+						className="contact-section__input"
+						type="email"
+						name="email"
+						placeholder="Email"
+						value={quoteForm.email}
+						onChange={handleQuoteChange}
+						required
+						autoComplete="email"
+					/>
+				</div>
 
-				<input
-					className="contact-section__input"
-					type="tel"
-					name="phone"
-					placeholder="Phone"
-					value={quoteForm.phone}
-					onChange={handleQuoteChange}
-				/>
+				<div>
+					<label className="visually-hidden" htmlFor="quote-phone">
+						Phone
+					</label>
+					<input
+						id="quote-phone"
+						className="contact-section__input"
+						type="tel"
+						name="phone"
+						placeholder="Phone"
+						value={quoteForm.phone}
+						onChange={handleQuoteChange}
+						autoComplete="tel"
+					/>
+				</div>
 			</div>
 
+			<label className="visually-hidden" htmlFor="quote-project-name">
+				Project name
+			</label>
 			<input
+				id="quote-project-name"
 				className="contact-section__input"
 				type="text"
 				name="projectName"
@@ -205,7 +240,11 @@ ${quoteForm.additionalNotes || "None provided"}
 				onChange={handleQuoteChange}
 			/>
 
+			<label className="visually-hidden" htmlFor="quote-project-type">
+				Project type
+			</label>
 			<select
+				id="quote-project-type"
 				className="contact-section__input"
 				name="projectType"
 				value={quoteForm.projectType}
@@ -220,36 +259,56 @@ ${quoteForm.additionalNotes || "None provided"}
 			</select>
 
 			<div className="contact-section__grid">
-				<select
-					className="contact-section__input"
-					name="timeline"
-					value={quoteForm.timeline}
-					onChange={handleQuoteChange}
-					required>
-					<option value="">Timeline</option>
-					{timelines.map((timeline) => (
-						<option key={timeline} value={timeline}>
-							{timeline}
-						</option>
-					))}
-				</select>
+				<div>
+					<label className="visually-hidden" htmlFor="quote-timeline">
+						Timeline
+					</label>
+					<select
+						id="quote-timeline"
+						className="contact-section__input"
+						name="timeline"
+						value={quoteForm.timeline}
+						onChange={handleQuoteChange}
+						required>
+						<option value="">Timeline</option>
+						{timelines.map((timeline) => (
+							<option key={timeline} value={timeline}>
+								{timeline}
+							</option>
+						))}
+					</select>
+				</div>
 
-				<select
-					className="contact-section__input"
-					name="investmentRange"
-					value={quoteForm.investmentRange}
-					onChange={handleQuoteChange}
-					required>
-					<option value="">Investment Range</option>
-					{investmentRanges.map((range) => (
-						<option key={range} value={range}>
-							{range}
-						</option>
-					))}
-				</select>
+				<div>
+					<label
+						className="visually-hidden"
+						htmlFor="quote-investment-range">
+						Investment Range
+					</label>
+					<select
+						id="quote-investment-range"
+						className="contact-section__input"
+						name="investmentRange"
+						value={quoteForm.investmentRange}
+						onChange={handleQuoteChange}
+						required>
+						<option value="">Investment Range</option>
+						{investmentRanges.map((range) => (
+							<option key={range} value={range}>
+								{range}
+							</option>
+						))}
+					</select>
+				</div>
 			</div>
 
+			<label
+				className="visually-hidden"
+				htmlFor="quote-project-description">
+				Tell me about the project
+			</label>
 			<textarea
+				id="quote-project-description"
 				className="contact-section__textarea"
 				name="projectDescription"
 				placeholder="Tell me about the project."
@@ -262,68 +321,107 @@ ${quoteForm.additionalNotes || "None provided"}
 			<details className="contact-section__details">
 				<summary>Project goals</summary>
 
-				<div className="contact-section__options contact-section__options--compact">
-					{projectGoals.map((goal) => (
-						<label className="contact-section__option" key={goal}>
-							<input
-								type="checkbox"
-								value={goal}
-								checked={quoteForm.goals.includes(goal)}
-								onChange={(e) => handleMultiSelect(e, "goals")}
-							/>
-							<span>{goal}</span>
-						</label>
-					))}
+				<div
+					className="contact-section__options contact-section__options--compact"
+					role="group"
+					aria-label="Project goals">
+					{projectGoals.map((goal, index) => {
+						const inputId = `quote-goal-${index}`;
+
+						return (
+							<label
+								className="contact-section__option"
+								htmlFor={inputId}
+								key={goal}>
+								<input
+									id={inputId}
+									type="checkbox"
+									value={goal}
+									checked={quoteForm.goals.includes(goal)}
+									onChange={(e) =>
+										handleMultiSelect(e, "goals")
+									}
+								/>
+								<span>{goal}</span>
+							</label>
+						);
+					})}
 				</div>
 			</details>
 
 			<details className="contact-section__details">
 				<summary>Desired features</summary>
 
-				<div className="contact-section__options contact-section__options--compact">
-					{desiredFeatures.map((feature) => (
-						<label
-							className="contact-section__option"
-							key={feature}>
-							<input
-								type="checkbox"
-								value={feature}
-								checked={quoteForm.features.includes(feature)}
-								onChange={(e) =>
-									handleMultiSelect(e, "features")
-								}
-							/>
-							<span>{feature}</span>
-						</label>
-					))}
+				<div
+					className="contact-section__options contact-section__options--compact"
+					role="group"
+					aria-label="Desired features">
+					{desiredFeatures.map((feature, index) => {
+						const inputId = `quote-feature-${index}`;
+
+						return (
+							<label
+								className="contact-section__option"
+								htmlFor={inputId}
+								key={feature}>
+								<input
+									id={inputId}
+									type="checkbox"
+									value={feature}
+									checked={quoteForm.features.includes(
+										feature,
+									)}
+									onChange={(e) =>
+										handleMultiSelect(e, "features")
+									}
+								/>
+								<span>{feature}</span>
+							</label>
+						);
+					})}
 				</div>
 			</details>
 
 			<details className="contact-section__details">
 				<summary>Existing assets</summary>
 
-				<div className="contact-section__options contact-section__options--compact">
+				<div
+					className="contact-section__options contact-section__options--compact"
+					role="group"
+					aria-label="Existing assets">
 					{[
 						["hasDomain", "Domain"],
 						["hasHosting", "Hosting"],
 						["hasLogo", "Logo/branding"],
 						["hasContent", "Written content"],
 						["hasImages", "Images/photos"],
-					].map(([name, label]) => (
-						<label className="contact-section__option" key={name}>
-							<input
-								type="checkbox"
-								name={name}
-								checked={quoteForm[name]}
-								onChange={handleQuoteChange}
-							/>
-							<span>{label}</span>
-						</label>
-					))}
+					].map(([name, label]) => {
+						const inputId = `quote-asset-${name}`;
+
+						return (
+							<label
+								className="contact-section__option"
+								htmlFor={inputId}
+								key={name}>
+								<input
+									id={inputId}
+									type="checkbox"
+									name={name}
+									checked={quoteForm[name]}
+									onChange={handleQuoteChange}
+								/>
+								<span>{label}</span>
+							</label>
+						);
+					})}
 				</div>
 			</details>
 
+			<label className="visually-hidden" htmlFor="quote-additional-notes">
+				Additional notes, links, inspiration, or questions
+			</label>
 			<textarea
+				id="quote-additional-notes"
 				className="contact-section__textarea contact-section__textarea--small"
 				name="additionalNotes"
 				placeholder="Additional notes, links, inspiration, or questions."

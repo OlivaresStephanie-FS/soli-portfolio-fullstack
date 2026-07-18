@@ -15,9 +15,25 @@ const commonServices = [
 	"Ongoing Maintenance & Support",
 ];
 
+const FORM_TABS = [
+	{
+		id: "general",
+		label: "General Inquiry",
+		tabId: "contact-tab-general",
+		panelId: "contact-panel-general",
+	},
+	{
+		id: "quote",
+		label: "Request a Quote",
+		tabId: "contact-tab-quote",
+		panelId: "contact-panel-quote",
+	},
+];
+
 function Contact() {
 	const [activeForm, setActiveForm] = useState("general");
 	const statusRef = useRef(null);
+	const tabRefs = useRef({});
 
 	const [status, setStatus] = useState({
 		loading: false,
@@ -40,6 +56,41 @@ function Contact() {
 			error: "",
 			success: "",
 		});
+	}
+
+	function selectForm(formId) {
+		setActiveForm(formId);
+		resetStatus();
+	}
+
+	function handleTabKeyDown(event, currentIndex) {
+		if (
+			event.key !== "ArrowLeft" &&
+			event.key !== "ArrowRight" &&
+			event.key !== "Home" &&
+			event.key !== "End"
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		let nextIndex = currentIndex;
+
+		if (event.key === "ArrowLeft") {
+			nextIndex =
+				(currentIndex - 1 + FORM_TABS.length) % FORM_TABS.length;
+		} else if (event.key === "ArrowRight") {
+			nextIndex = (currentIndex + 1) % FORM_TABS.length;
+		} else if (event.key === "Home") {
+			nextIndex = 0;
+		} else if (event.key === "End") {
+			nextIndex = FORM_TABS.length - 1;
+		}
+
+		const nextTab = FORM_TABS[nextIndex];
+		selectForm(nextTab.id);
+		tabRefs.current[nextTab.id]?.focus();
 	}
 
 	async function submitToApi(payload, successMessage) {
@@ -106,9 +157,19 @@ function Contact() {
 
 	function renderStatusMessage() {
 		return (
-			<div ref={statusRef}>
+			<div
+				ref={statusRef}
+				aria-live="polite"
+				aria-atomic="true"
+				aria-relevant="additions text">
+				{status.loading ? (
+					<p className="visually-hidden">Sending message...</p>
+				) : null}
+
 				{status.error ? (
-					<p className="contact-section__status contact-section__status--error">
+					<p
+						className="contact-section__status contact-section__status--error"
+						role="alert">
 						{status.error}
 					</p>
 				) : null}
@@ -121,6 +182,8 @@ function Contact() {
 			</div>
 		);
 	}
+
+	const activeTab = FORM_TABS.find((tab) => tab.id === activeForm);
 
 	return (
 		<section className="contact-section" id="contact">
@@ -170,49 +233,58 @@ function Contact() {
 							</p>
 						</div>
 
-						<div className="contact-section__tabs">
-							<button
-								type="button"
-								className={`contact-section__tab ${
-									activeForm === "general"
-										? "contact-section__tab--active"
-										: ""
-								}`}
-								onClick={() => {
-									setActiveForm("general");
-									resetStatus();
-								}}>
-								General Inquiry
-							</button>
+						<div
+							className="contact-section__tabs"
+							role="tablist"
+							aria-label="Contact form type">
+							{FORM_TABS.map((tab, index) => {
+								const isSelected = activeForm === tab.id;
 
-							<button
-								type="button"
-								className={`contact-section__tab ${
-									activeForm === "quote"
-										? "contact-section__tab--active"
-										: ""
-								}`}
-								onClick={() => {
-									setActiveForm("quote");
-									resetStatus();
-								}}>
-								Request a Quote
-							</button>
+								return (
+									<button
+										key={tab.id}
+										ref={(node) => {
+											tabRefs.current[tab.id] = node;
+										}}
+										type="button"
+										id={tab.tabId}
+										role="tab"
+										aria-selected={isSelected}
+										aria-controls={tab.panelId}
+										tabIndex={isSelected ? 0 : -1}
+										className={`contact-section__tab ${
+											isSelected
+												? "contact-section__tab--active"
+												: ""
+										}`}
+										onClick={() => selectForm(tab.id)}
+										onKeyDown={(event) =>
+											handleTabKeyDown(event, index)
+										}>
+										{tab.label}
+									</button>
+								);
+							})}
 						</div>
 
 						{renderStatusMessage()}
 
-						{activeForm === "general" ? (
-							<GeneralContactForm
-								status={status}
-								submitToApi={submitToApi}
-							/>
-						) : (
-							<QuoteRequestForm
-								status={status}
-								submitToApi={submitToApi}
-							/>
-						)}
+						<div
+							id={activeTab.panelId}
+							role="tabpanel"
+							aria-labelledby={activeTab.tabId}>
+							{activeForm === "general" ? (
+								<GeneralContactForm
+									status={status}
+									submitToApi={submitToApi}
+								/>
+							) : (
+								<QuoteRequestForm
+									status={status}
+									submitToApi={submitToApi}
+								/>
+							)}
+						</div>
 					</div>
 				</div>
 			</Container>

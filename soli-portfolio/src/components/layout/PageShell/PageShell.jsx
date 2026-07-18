@@ -5,9 +5,12 @@ import ScrollToHash from "../ScrollToHash/ScrollToHash";
 function PageShell({ children }) {
 	return (
 		<div className="page-shell">
+			<a href="#main-content" className="skip-link">
+				Skip to content
+			</a>
 			<ScrollToHash />
 			<NavBar />
-			{children}
+			<main id="main-content">{children}</main>
 			<Footer />
 		</div>
 	);

@@ -33,8 +33,15 @@ function GeneralContactForm({ status, submitToApi }) {
 	}
 
 	return (
-		<form className="contact-section__form" onSubmit={handleSubmit}>
+		<form
+			className="contact-section__form"
+			onSubmit={handleSubmit}
+			aria-busy={status.loading}>
+			<label className="visually-hidden" htmlFor="general-name">
+				Your name
+			</label>
 			<input
+				id="general-name"
 				className="contact-section__input"
 				type="text"
 				name="name"
@@ -42,9 +49,14 @@ function GeneralContactForm({ status, submitToApi }) {
 				value={form.name}
 				onChange={handleChange}
 				required
+				autoComplete="name"
 			/>
 
+			<label className="visually-hidden" htmlFor="general-email">
+				Your email
+			</label>
 			<input
+				id="general-email"
 				className="contact-section__input"
 				type="email"
 				name="email"
@@ -52,9 +64,14 @@ function GeneralContactForm({ status, submitToApi }) {
 				value={form.email}
 				onChange={handleChange}
 				required
+				autoComplete="email"
 			/>
 
+			<label className="visually-hidden" htmlFor="general-subject">
+				Subject
+			</label>
 			<input
+				id="general-subject"
 				className="contact-section__input"
 				type="text"
 				name="subject"
@@ -64,7 +81,11 @@ function GeneralContactForm({ status, submitToApi }) {
 				required
 			/>
 
+			<label className="visually-hidden" htmlFor="general-message">
+				Your message
+			</label>
 			<textarea
+				id="general-message"
 				className="contact-section__textarea"
 				name="message"
 				placeholder="Your message"
