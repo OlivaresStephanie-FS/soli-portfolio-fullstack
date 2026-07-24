@@ -6,6 +6,7 @@ import { authenticationCrud } from "./authenticationCrud";
 import { netflixClone } from "./netflixClone";
 import { severancePromo } from "./severancePromo";
 import { spotifyPrototype } from "./spotifyPrototype";
+import { movievault } from "./movievault";
 
 export const projects = [
 	contractorPlatform,
@@ -16,4 +17,5 @@ export const projects = [
 	netflixClone,
 	severancePromo,
 	spotifyPrototype,
+	movievault,
 ];
