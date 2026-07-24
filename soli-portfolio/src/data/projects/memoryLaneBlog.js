@@ -11,6 +11,7 @@ export const memoryLaneBlog = {
 	stack: ["Next.js", "React", "Markdown", "CSS"],
 	tech: ["Next.js", "React", "Markdown", "CSS"],
 	image: "/screenshots/projects/memory-lane/homepage.png",
+	cardImageClass: "project-card__img--memory-lane",
 	featured: true,
 	category: "Frontend",
 	live: "https://static-website-blog-gray.vercel.app/",

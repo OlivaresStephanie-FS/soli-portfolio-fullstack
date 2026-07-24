@@ -44,6 +44,12 @@
 	object-position: center top;
 }
 
+/* Memory Lane: emphasize Developer Journal hero card, not page chrome */
+.project-card__image img.project-card__img--memory-lane {
+	object-fit: cover;
+	object-position: center 30%;
+}
+
 /* Portrait mobile screenshots: show full frame without cropping */
 .project-card__image:has(img.project-card__img--mobile-contain) {
 	background: #12081c;
