@@ -35,7 +35,7 @@ export const movievault = {
 		"JavaScript",
 	],
 	image: "/screenshots/projects/movievault/dashboard.png",
-	cardImageClass: "project-card__img--focus-top",
+	cardImageClass: "project-card__img--mobile-contain",
 	featured: true,
 	category: "Full Stack",
 	live: "",

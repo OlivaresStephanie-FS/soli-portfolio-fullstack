@@ -44,8 +44,23 @@
 	object-position: center top;
 }
 
+/* Portrait mobile screenshots: show full frame without cropping */
+.project-card__image:has(img.project-card__img--mobile-contain) {
+	background: #12081c;
+	padding: 0.75rem 1rem;
+}
+
+.project-card__image img.project-card__img--mobile-contain {
+	object-fit: contain;
+	object-position: center;
+}
+
 .project-card:hover .project-card__image img {
 	transform: scale(1.03);
+}
+
+.project-card:hover .project-card__image img.project-card__img--mobile-contain {
+	transform: none;
 }
 
 .project-card__content {
