@@ -44,10 +44,10 @@
 	object-position: center top;
 }
 
-/* Memory Lane: emphasize Developer Journal hero card, not page chrome */
+/* Memory Lane: keep the site header and Developer Journal panel in view */
 .project-card__image img.project-card__img--memory-lane {
 	object-fit: cover;
-	object-position: center 20%;
+	object-position: center top;
 }
 
 /* Portrait mobile screenshots: show full frame without cropping */
