@@ -2,9 +2,9 @@ export const movievault = {
 	slug: "movievault",
 	title: "MovieVault",
 	description:
-		"Full-stack MERN application for registering, authenticating with JWT, and managing a personal movie collection through a secure REST API—with React web and React Native mobile clients.",
+		"Cross-platform full-stack movie collection platform with React web and React Native clients, JWT authentication, and protected CRUD operations through a shared Express and MongoDB API.",
 	tagline:
-		"JWT-secured movie CRUD across a shared Express API, React web app, and React Native mobile client.",
+		"One secure movie-library API powering both browser and mobile experiences.",
 	role: "Full Stack Developer",
 	status: "School Project",
 	duration: "2026",
@@ -34,8 +34,7 @@ export const movievault = {
 		"REST API",
 		"JavaScript",
 	],
-	image: "/screenshots/projects/movievault/dashboard.png",
-	cardImageClass: "project-card__img--mobile-contain",
+	image: "/screenshots/projects/movievault/web/dashboard.png",
 	featured: true,
 	category: "Full Stack",
 	live: "",
@@ -43,69 +42,118 @@ export const movievault = {
 	github: "https://github.com/OlivaresStephanie-FS/Movie-API",
 	githubUrl: "https://github.com/OlivaresStephanie-FS/Movie-API",
 	overview:
-		"MovieVault is a full-stack MERN application that lets users register, authenticate with JWT, and manage a personal movie collection through a secure REST API. A shared Express backend powers both a React web application and a React Native (Expo) mobile client for creating, updating, and deleting movies stored in MongoDB Atlas.",
+		"MovieVault is built around a shared authenticated REST API that powers two distinct client applications: a React web client and a React Native mobile client. Users register, log in with JWT, and manage a personal movie collection through protected CRUD endpoints backed by MongoDB Atlas. The project focuses on multi-client full-stack architecture—one backend serving browser and mobile interfaces with platform-appropriate navigation and UI—rather than a single-surface CRUD demo.",
 	problem:
-		"I needed a full-stack project that connected authentication, protected CRUD endpoints, and multiple clients—web and mobile—to one backend API rather than building a single-surface demo.",
+		"Supporting both browser and mobile users meant more than duplicating screens. Authentication had to behave consistently across clients, personal movie data needed protection, CRUD logic had to stay centralized in one API, data had to stay synchronized between interfaces, and authenticated mobile sessions needed to persist between launches.",
 	solution:
-		"I built MovieVault with JWT authentication and bcryptjs password hashing on an Express REST API, MongoDB Atlas persistence through Mongoose, and two consumers of the same API: a React web interface and a React Native mobile experience using React Navigation.",
+		"I built an Express REST API as the shared application layer with MongoDB Atlas and Mongoose for persistence, bcryptjs for password hashing, and JWT issuance with middleware protecting movie routes. The React web client uses React Router for browser flows, while the React Native Expo client uses React Navigation and AsyncStorage for persistent mobile authentication—both consuming the same reusable API endpoints.",
 	results: [
-		"Implemented user registration and JWT authentication with protected movie routes.",
-		"Delivered full CRUD movie management against MongoDB Atlas.",
-		"Connected both React web and React Native mobile clients to the same Express API.",
-		"Strengthened end-to-end skills across authentication, API design, and multi-client consumption.",
+		"Completed registration and login flows on web and mobile clients.",
+		"Protected all movie endpoints with JWT middleware.",
+		"Implemented complete movie CRUD behavior through the shared API.",
+		"Connected both React web and React Native clients to the same backend.",
+		"Persisted movie data in MongoDB Atlas with Mongoose models.",
+		"Deployed the REST API for client consumption.",
+		"Created distinct web and mobile interfaces around shared backend behavior.",
+		"Faced challenges coordinating JWT state across two client environments, persisting mobile sessions with AsyncStorage, and validating local versus deployed API configuration.",
+		"Learned to design one API for multiple clients, separate backend behavior from presentation, and adapt navigation patterns by platform.",
 	],
 	features: [
-		"User registration and login",
-		"JWT authentication",
+		"User registration",
+		"User login",
 		"Password hashing with bcryptjs",
-		"Protected CRUD movie endpoints",
-		"Add, update, and delete movies",
-		"Movie dashboard and movie details views",
-		"React web application",
-		"React Native mobile application with Expo",
-		"React Router for web navigation",
-		"React Navigation for mobile navigation",
-		"Responsive web interface",
-		"Mobile-first React Native experience",
+		"JWT authentication",
+		"Protected routes",
+		"Logout",
+		"Persistent mobile sessions with AsyncStorage",
+		"Create movie",
+		"List movies",
+		"View movie details",
+		"Update movie",
+		"Delete movie",
+		"React web client",
+		"React Native mobile client",
+		"Shared Express REST API",
 	],
 	architecture: [
-		"MERN architecture with a shared Express REST API serving web and mobile clients",
-		"JWT authentication protecting CRUD movie endpoints",
-		"MongoDB Atlas persistence with Mongoose models",
-		"React web client using React Router for authenticated flows",
-		"React Native (Expo) mobile client using React Navigation",
-		"bcryptjs for secure password hashing on the backend",
+		"Dual-client architecture: React web client and React Native (Expo) mobile client",
+		"Shared Express REST API as the single application backend",
+		"MongoDB Atlas for cloud persistence",
+		"Mongoose models for movie and user data",
+		"bcryptjs password hashing",
+		"JWT issuance and middleware protecting movie CRUD routes",
+		"AsyncStorage for persistent mobile authentication sessions",
+		"React Router navigation on the web client",
+		"React Navigation on the mobile client",
+		"Deployed REST API consumed by both clients",
+		"GitHub repository: https://github.com/OlivaresStephanie-FS/Movie-API",
 	],
 	gallery: [
 		{
-			src: "/screenshots/projects/movievault/login.png",
-			alt: "MovieVault mobile login screen",
+			src: "/screenshots/projects/movievault/web/home-public.png",
+			alt: "MovieVault React web public home page",
 			caption:
-				"JWT login screen for authenticating into the MovieVault mobile client.",
+				"Public landing page introducing MovieVault and directing users to log in or register.",
+		},
+		{
+			src: "/screenshots/projects/movievault/web/login.png",
+			alt: "MovieVault React web login page",
+			caption:
+				"Browser-based login form for authenticating an existing MovieVault account.",
+		},
+		{
+			src: "/screenshots/projects/movievault/web/register.png",
+			alt: "MovieVault React web registration page",
+			caption:
+				"Browser registration form for creating a new MovieVault account.",
+		},
+		{
+			src: "/screenshots/projects/movievault/web/home-authenticated.png",
+			alt: "MovieVault authenticated React web home page",
+			caption:
+				"Authenticated web landing page with direct access to the movie dashboard.",
+		},
+		{
+			src: "/screenshots/projects/movievault/web/dashboard.png",
+			alt: "MovieVault React web movie dashboard",
+			caption:
+				"Protected web dashboard for adding movies and viewing the saved collection.",
+		},
+		{
+			src: "/screenshots/projects/movievault/web/movie-details.png",
+			alt: "MovieVault React web movie details page",
+			caption:
+				"Web detail view for reviewing, updating, or deleting a selected movie.",
+		},
+		{
+			src: "/screenshots/projects/movievault/login.png",
+			alt: "MovieVault React Native login screen",
+			caption:
+				"React Native login screen for authenticating into the mobile MovieVault client.",
 		},
 		{
 			src: "/screenshots/projects/movievault/register.png",
-			alt: "MovieVault mobile register screen",
+			alt: "MovieVault React Native registration screen",
 			caption:
-				"Registration screen for creating a MovieVault account with email and password.",
+				"React Native registration screen for creating a MovieVault account on mobile.",
 		},
 		{
 			src: "/screenshots/projects/movievault/home.png",
-			alt: "MovieVault mobile home screen",
+			alt: "MovieVault React Native home screen",
 			caption:
-				"Authenticated home screen with entry into the movie collection dashboard.",
+				"React Native home screen with entry into the movie collection dashboard.",
 		},
 		{
 			src: "/screenshots/projects/movievault/dashboard.png",
-			alt: "MovieVault movie dashboard",
+			alt: "MovieVault React Native movie dashboard",
 			caption:
-				"Movie dashboard for adding titles and reviewing the personal collection.",
+				"React Native dashboard for adding movies and reviewing the personal collection.",
 		},
 		{
 			src: "/screenshots/projects/movievault/movie-details.png",
-			alt: "MovieVault movie details screen",
+			alt: "MovieVault React Native movie details screen",
 			caption:
-				"Movie details view for updating or deleting a selected movie record.",
+				"React Native detail view for updating or deleting a selected movie.",
 		},
 	],
 };
