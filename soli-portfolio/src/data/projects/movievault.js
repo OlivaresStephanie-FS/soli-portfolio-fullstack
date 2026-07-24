@@ -34,7 +34,7 @@ export const movievault = {
 		"REST API",
 		"JavaScript",
 	],
-	image: "/screenshots/projects/movievault/web/dashboard.png",
+	image: "/screenshots/projects/movievault/web/home-authenticated.png",
 	featured: true,
 	category: "Full Stack",
 	live: "",
