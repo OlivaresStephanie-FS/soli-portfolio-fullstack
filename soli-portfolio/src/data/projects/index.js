@@ -5,6 +5,7 @@ import { memoryLaneBlog } from "./memoryLaneBlog";
 import { authenticationCrud } from "./authenticationCrud";
 import { netflixClone } from "./netflixClone";
 import { severancePromo } from "./severancePromo";
+import { spotifyPrototype } from "./spotifyPrototype";
 
 export const projects = [
 	contractorPlatform,
@@ -14,4 +15,5 @@ export const projects = [
 	authenticationCrud,
 	netflixClone,
 	severancePromo,
+	spotifyPrototype,
 ];
