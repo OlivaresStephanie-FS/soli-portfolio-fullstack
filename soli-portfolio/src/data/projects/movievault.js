@@ -37,8 +37,8 @@ export const movievault = {
 	image: "/screenshots/projects/movievault/web/home-authenticated.png",
 	featured: true,
 	category: "Full Stack",
-	live: "",
-	liveUrl: "",
+	live: "https://movies-api-dwa-assignment-1b9df33548df.herokuapp.com/",
+	liveUrl: "https://movies-api-dwa-assignment-1b9df33548df.herokuapp.com/",
 	github: "https://github.com/OlivaresStephanie-FS/Movie-API",
 	githubUrl: "https://github.com/OlivaresStephanie-FS/Movie-API",
 	overview:

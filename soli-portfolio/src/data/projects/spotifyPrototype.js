@@ -30,8 +30,8 @@ export const spotifyPrototype = {
 	cardImageClass: "project-card__img--focus-top",
 	featured: true,
 	category: "Full Stack",
-	live: "",
-	liveUrl: "",
+	live: "https://music.soli.nyc/",
+	liveUrl: "https://music.soli.nyc/",
 	github: "https://github.com/OlivaresStephanie-FS/SpotifyPrototype",
 	githubUrl: "https://github.com/OlivaresStephanie-FS/SpotifyPrototype",
 	overview:
