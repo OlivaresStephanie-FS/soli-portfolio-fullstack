@@ -14,6 +14,7 @@ function ProjectCard({ project }) {
 				<img
 					src={project.image}
 					alt={project.title}
+					className={project.cardImageClass}
 					width={640}
 					height={220}
 					loading="lazy"
