@@ -1,13 +1,25 @@
 import "./ProjectCard.css";
 import { Link } from "react-router-dom";
 
+function handleProjectImageError(event) {
+	event.currentTarget.style.visibility = "hidden";
+}
+
 function ProjectCard({ project }) {
 	const hasLiveDemo = project.live || project.liveUrl;
 
 	return (
 		<Link to={`/projects/${project.slug}`} className="project-card">
 			<div className="project-card__image">
-				<img src={project.image} alt={project.title} />
+				<img
+					src={project.image}
+					alt={project.title}
+					width={640}
+					height={220}
+					loading="lazy"
+					decoding="async"
+					onError={handleProjectImageError}
+				/>
 
 				{hasLiveDemo && (
 					<span className="project-card__badge">Live Demo</span>

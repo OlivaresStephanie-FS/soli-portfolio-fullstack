@@ -1,5 +1,6 @@
 import Container from "../../ui/Container/Container";
-import profile from "../../../assets/images/Profile.png";
+import profileAvif from "../../../assets/images/Profile.avif";
+import profileWebp from "../../../assets/images/Profile.webp";
 import "./Hero.css";
 
 function Hero() {
@@ -20,11 +21,19 @@ function Hero() {
 						</div>
 
 						<div className="hero__profile">
-							<img
-								src={profile}
-								alt="Stephanie Olivares"
-								className="hero__profile-image"
-							/>
+							<picture>
+								<source srcSet={profileAvif} type="image/avif" />
+								<source srcSet={profileWebp} type="image/webp" />
+								<img
+									src={profileWebp}
+									alt="Stephanie Olivares"
+									className="hero__profile-image"
+									width={400}
+									height={600}
+									decoding="async"
+									fetchPriority="high"
+								/>
+							</picture>
 						</div>
 					</div>
 

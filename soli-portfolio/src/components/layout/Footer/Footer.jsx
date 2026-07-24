@@ -17,6 +17,10 @@ function Footer() {
 						src={solinycLogo}
 						alt="SOLINYC logo"
 						className="site-footer__logo"
+						width={512}
+						height={512}
+						loading="lazy"
+						decoding="async"
 					/>
 
 					<div className="site-footer__brand-text">
