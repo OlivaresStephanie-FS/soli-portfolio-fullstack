@@ -13,8 +13,8 @@ export const severancePromo = {
 	image: "/screenshots/severance-home.png",
 	featured: true,
 	category: "UI / Visual",
-	live: "",
-	liveUrl: "",
+	live: "https://solinyc.github.io/severance/",
+	liveUrl: "https://solinyc.github.io/severance/",
 	github: "",
 	githubUrl: "",
 	overview:
