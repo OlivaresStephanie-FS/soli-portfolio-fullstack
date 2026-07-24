@@ -2,7 +2,7 @@ export const movievault = {
 	slug: "movievault",
 	title: "MovieVault",
 	description:
-		"Cross-platform full-stack movie collection platform with React web and React Native clients, JWT authentication, and protected CRUD operations through a shared Express and MongoDB API.",
+		"Full-stack movie collection application featuring React web and React Native clients with JWT authentication, protected CRUD operations, and a shared Express/MongoDB backend.",
 	tagline:
 		"One secure movie-library API powering both browser and mobile experiences.",
 	role: "Full Stack Developer",
