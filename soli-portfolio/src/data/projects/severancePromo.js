@@ -10,13 +10,14 @@ export const severancePromo = {
 	duration: "2021",
 	stack: ["HTML", "CSS", "JavaScript"],
 	tech: ["HTML", "CSS", "JavaScript"],
-	image: "/screenshots/severance-home.png",
+	image: "/screenshots/projects/severance-promo/homepage.png",
+	cardImageClass: "project-card__img--focus-top",
 	featured: true,
 	category: "UI / Visual",
 	live: "https://solinyc.github.io/severance/",
 	liveUrl: "https://solinyc.github.io/severance/",
-	github: "",
-	githubUrl: "",
+	github: "https://github.com/solinyc/severance.git",
+	githubUrl: "https://github.com/solinyc/severance.git",
 	overview:
 		"This project explores visual storytelling, layout, and branded presentation through a promo-style website experience.",
 	features: [
@@ -27,15 +28,10 @@ export const severancePromo = {
 	],
 	gallery: [
 		{
-			src: "/screenshots/severance-home.png",
-			alt: "Severance landing page",
+			src: "/screenshots/projects/severance-promo/homepage.png",
+			alt: "Severance promotional website homepage",
 			caption:
-				"Atmospheric promotional landing page inspired by the series.",
-		},
-		{
-			src: "/screenshots/severance-sections.png",
-			alt: "Severance content sections",
-			caption: "Visual storytelling and branded content presentation.",
+				"Single-page promotional experience featuring the hero section, synopsis, soundtrack, teaser, opening credits, and footer.",
 		},
 	],
 };

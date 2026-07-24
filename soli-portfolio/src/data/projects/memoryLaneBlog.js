@@ -13,10 +13,10 @@ export const memoryLaneBlog = {
 	image: "/screenshots/memory-lane-home.png",
 	featured: true,
 	category: "Frontend",
-	live: "",
-	liveUrl: "",
-	github: "",
-	githubUrl: "",
+	live: "https://static-website-blog-gray.vercel.app/",
+	liveUrl: "https://static-website-blog-gray.vercel.app/",
+	github: "https://github.com/OlivaresStephanie-FS/static-website-blog.git",
+	githubUrl: "https://github.com/OlivaresStephanie-FS/static-website-blog.git",
 	overview:
 		"Memory Lane is a static-generated blog project created to publish short technical articles using Markdown content and a structured Next.js setup.",
 	problem:
