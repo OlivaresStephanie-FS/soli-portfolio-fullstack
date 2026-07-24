@@ -1,6 +1,6 @@
 export const memoryLaneBlog = {
 	slug: "memory-lane-blog",
-	title: "Memory Lane Blog",
+	title: "Blog Site: Memory Lane",
 	description:
 		"Static blog project built with Next.js and Markdown content focused on web development concepts.",
 	tagline:
