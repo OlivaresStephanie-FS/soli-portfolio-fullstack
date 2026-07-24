@@ -47,7 +47,7 @@
 /* Memory Lane: emphasize Developer Journal hero card, not page chrome */
 .project-card__image img.project-card__img--memory-lane {
 	object-fit: cover;
-	object-position: center 30%;
+	object-position: center 20%;
 }
 
 /* Portrait mobile screenshots: show full frame without cropping */
