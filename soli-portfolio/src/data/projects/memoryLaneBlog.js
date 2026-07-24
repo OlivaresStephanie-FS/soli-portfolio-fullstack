@@ -10,7 +10,7 @@ export const memoryLaneBlog = {
 	duration: "2026",
 	stack: ["Next.js", "React", "Markdown", "CSS"],
 	tech: ["Next.js", "React", "Markdown", "CSS"],
-	image: "/screenshots/memory-lane-home.png",
+	image: "/screenshots/projects/memory-lane/homepage.png",
 	featured: true,
 	category: "Frontend",
 	live: "https://static-website-blog-gray.vercel.app/",
@@ -43,15 +43,20 @@ export const memoryLaneBlog = {
 	],
 	gallery: [
 		{
-			src: "/screenshots/memory-lane-home.png",
-			alt: "Memory Lane blog homepage",
-			caption: "Static blog homepage with technical article previews.",
+			src: "/screenshots/projects/memory-lane/homepage.png",
+			alt: "Memory Lane homepage featuring a Developer Journal hero card and Read Posts button",
+			caption: "The landing page for Memory Lane, a developer journal blog project.",
 		},
 		{
-			src: "/screenshots/memory-lane-post.png",
-			alt: "Memory Lane blog article page",
+			src: "/screenshots/projects/memory-lane/posts.png",
+			alt: "Memory Lane all posts listing page",
+			caption: "Posts index listing technical journal entries with dates and read links.",
+		},
+		{
+			src: "/screenshots/projects/memory-lane/post.png",
+			alt: "Memory Lane single blog post page",
 			caption:
-				"Markdown-powered article page with metadata and lead image.",
+				"Individual journal entry with article content, diagram, and back navigation.",
 		},
 	],
 };
