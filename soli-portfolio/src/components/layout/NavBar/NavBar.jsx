@@ -12,6 +12,10 @@ function Navbar() {
 						src={logo}
 						alt="SOLINYC logo"
 						className="site-brand__logo"
+						width={512}
+						height={512}
+						decoding="async"
+						fetchPriority="high"
 					/>
 
 					<div className="site-brand__text">

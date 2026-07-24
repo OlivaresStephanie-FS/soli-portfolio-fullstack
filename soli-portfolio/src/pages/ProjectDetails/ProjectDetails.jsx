@@ -131,6 +131,12 @@ export default function ProjectDetails() {
 												`${project.title} screenshot ${index + 1}`
 											}
 											className="project-gallery__image"
+											loading="lazy"
+											decoding="async"
+											onError={(event) => {
+												event.currentTarget.style.visibility =
+													"hidden";
+											}}
 										/>
 
 										{item.caption && (
