@@ -48,6 +48,8 @@
 .project-card__image img.project-card__img--memory-lane {
 	object-fit: cover;
 	object-position: center bottom;
+	width: 100%;
+	height: 220px;
 }
 
 /* Portrait mobile screenshots: show full frame without cropping */
