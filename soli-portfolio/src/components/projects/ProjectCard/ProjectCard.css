@@ -47,7 +47,7 @@
 /* Memory Lane: keep the site header and Developer Journal panel in view */
 .project-card__image img.project-card__img--memory-lane {
 	object-fit: cover;
-	object-position: center bottom;
+	object-position: center top;
 	width: 100%;
 	height: 100px;
 }
