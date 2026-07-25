@@ -1,15 +1,17 @@
 import { contractorPlatform } from "./contractorPlatform";
+import { spotifyPrototype } from "./spotifyPrototype";
 import { memoryLaneBlog } from "./memoryLaneBlog";
+import { movievault } from "./movievault";
 import { netflixClone } from "./netflixClone";
 import { severancePromo } from "./severancePromo";
-import { spotifyPrototype } from "./spotifyPrototype";
-import { movievault } from "./movievault";
+
+
 
 export const projects = [
 	contractorPlatform,
+	spotifyPrototype,
 	memoryLaneBlog,
+	movievault,
 	netflixClone,
 	severancePromo,
-	spotifyPrototype,
-	movievault,
 ];
