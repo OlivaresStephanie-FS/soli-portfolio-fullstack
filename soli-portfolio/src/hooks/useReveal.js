@@ -16,8 +16,13 @@ function useReveal(options = {}) {
 				}
 			},
 			{
-				threshold: 0.16,
-				rootMargin: "0px 0px -40px 0px",
+				// threshold must stay near 0: a ratio like 0.16 is relative to the
+				// *element* height, so sections taller than ~viewport/0.16 (e.g.
+				// the Projects grid on mobile) can never reach the threshold and
+				// stay stuck at opacity 0. rootMargin still requires a meaningful
+				// viewport inset before reveal fires.
+				threshold: 0,
+				rootMargin: "0px 0px -12% 0px",
 				...options,
 			},
 		);
